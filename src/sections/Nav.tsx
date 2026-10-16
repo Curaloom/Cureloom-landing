@@ -1,43 +1,65 @@
-import PillNav from '../components/reactbits/Components/PillNav/PillNav';
-import StarBorder from '../components/reactbits/Animations/StarBorder/StarBorder';
-import { LogoMark } from '../components/Logo';
+import { useEffect, useState } from 'react';
+import { Wordmark } from '../components/Logo';
 import { NAV_ITEMS, SITE } from '../site';
 
 export function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const close = () => setOpen(false);
+    window.addEventListener('resize', close);
+    return () => window.removeEventListener('resize', close);
+  }, [open]);
+
   return (
-    <header className="nav">
-      <div className="nav__brand">
-        <PillNav
-          logo={<LogoMark size={26} tight />}
-          logoAlt={`${SITE.name} home`}
-          logoHref="#top"
-          items={NAV_ITEMS}
-          theme="dark"
-          surface="glass"
-          size="md"
-          highlightColor="#13b5a3"
-          highlightTextColor="#050a12"
-          indicator="dot"
-          collapse="auto"
-          ariaLabel="Main"
-        />
+    <header className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
+      <div className="container nav__inner">
+        <a href="#top" aria-label={`${SITE.name} home`}>
+          <Wordmark size={22} />
+        </a>
+        <nav className="nav__links" aria-label="Main">
+          {NAV_ITEMS.map((item) => (
+            <a key={item.href} href={item.href}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <div className="nav__right">
+          <a className="btn btn--primary btn--sm" href={SITE.bookingHref}>
+            Request a walkthrough
+          </a>
+          <button
+            type="button"
+            className="nav__toggle"
+            aria-expanded={open}
+            aria-controls="nav-panel"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? 'Close' : 'Menu'}
+          </button>
+        </div>
       </div>
-      <div className="nav__cta">
-        <StarBorder
-          as="a"
-          href={SITE.bookingHref}
-          className="btn-star btn-star--sm"
-          color="#9bebd5"
-          theme="dark"
-          backgroundColor="#0e1724"
-          radius={22}
-          thickness={1}
-          glow={0.7}
-          duration={5}
-        >
-          Book a walkthrough
-        </StarBorder>
-      </div>
+      {open && (
+        <div id="nav-panel" className="nav__panel">
+          {NAV_ITEMS.map((item) => (
+            <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+              {item.label}
+            </a>
+          ))}
+          <a className="btn btn--primary" href={SITE.bookingHref} onClick={() => setOpen(false)}>
+            Request a walkthrough
+          </a>
+        </div>
+      )}
     </header>
   );
 }

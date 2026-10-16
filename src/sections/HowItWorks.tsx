@@ -1,163 +1,153 @@
-import ScrollStack, { ScrollStackItem } from '../components/reactbits/Components/ScrollStack/ScrollStack';
+import AnimatedContent from '../components/reactbits/Animations/AnimatedContent/AnimatedContent';
 import { SectionHeading } from '../components/SectionHeading';
 import { Check } from '../components/icons';
 import { STEPS } from '../site';
 
-function EnrollVisual() {
+function EnrollPanel() {
   return (
-    <div className="mini">
-      <div className="mini__row">
+    <div className="ui">
+      <div className="ui__row">
         <strong>october-roster.csv</strong>
-        <span className="mini__muted">15 rows</span>
+        <span className="ui__muted">15 rows · 13 accepted</span>
       </div>
-      <div className="mini__row">
+      <div className="ui__row">
         <span>
-          <strong>Harold W.</strong> <span className="mini__muted">· I50.9, N18.3 · visit 02 Sep</span>
+          <strong>Harold Jenkins</strong> <span className="ui__muted">· I50.9, N18.3 · visit 12 Sep</span>
         </span>
-        <span className="mini__pill mini__pill--ok">Eligible</span>
+        <span className="tag tag--ok">Eligible</span>
       </div>
-      <div className="mini__row">
+      <div className="ui__row">
         <span>
-          <strong>Maria D.</strong> <span className="mini__muted">· E11.9, I10 · QMB</span>
+          <strong>Maria Delgado</strong> <span className="ui__muted">· E11.9, I10 · QMB</span>
         </span>
-        <span className="mini__pill mini__pill--info">APCM · G0558</span>
+        <span className="tag tag--info">APCM · G0558</span>
       </div>
-      <div className="mini__row">
+      <div className="ui__row">
         <span>
-          <strong>Row 12</strong> <span className="mini__muted">· last visit 14 months ago</span>
+          <strong>Row 12</strong> <span className="ui__muted">· last visit 14 months ago</span>
         </span>
-        <span className="mini__pill mini__pill--warn">Needs a visit</span>
+        <span className="tag tag--concern">Needs a visit</span>
       </div>
-      <div className="mini__row">
+      <div className="ui__row">
         <span>
-          <strong>Row 14</strong> <span className="mini__muted">· one qualifying code</span>
+          <strong>Row 14</strong> <span className="ui__muted">· one qualifying code</span>
         </span>
-        <span className="mini__pill mini__pill--bad">Not eligible</span>
+        <span className="tag tag--urgent">Not eligible</span>
       </div>
     </div>
   );
 }
 
-function CheckInVisual() {
+function CheckInPanel() {
   return (
-    <div className="mini">
-      <div className="mini__bubble mini__bubble--ai">
-        Hi, this is the automated check-in from Westfield Family Medicine for Harold. This call is recorded and reviewed
-        by your nurse. Is now a good time?
+    <div className="ui">
+      <div className="ui__bubble ui__bubble--ai">
+        This is an automated call from Westfield Family Medicine, Dr. Anita Patel's office. This call is recorded and
+        reviewed by your nurse. Is now a good time?
       </div>
-      <div className="mini__bubble mini__bubble--pt">Yes, go ahead.</div>
-      <div className="mini__bubble mini__bubble--ai">Have you taken your medications as prescribed this week?</div>
-      <div className="mini__bubble mini__bubble--pt">Mostly. I skipped the water pill twice, my ankles are swollen.</div>
-      <div className="mini__row">
-        <span className="mini__muted">Parsed: missed_doses · symptom: edema</span>
-        <span className="mini__pill mini__pill--warn">Routine flag</span>
+      <div className="ui__bubble ui__bubble--pt">Yes, go ahead.</div>
+      <div className="ui__bubble ui__bubble--ai">Have you taken your medications as prescribed this week?</div>
+      <div className="ui__bubble ui__bubble--pt">Mostly. I ran out of metformin three days ago.</div>
+      <div className="ui__row">
+        <span className="ui__muted">Recorded: missed doses · ran out of medication</span>
+        <span className="tag tag--concern">Concern routed to nurse</span>
       </div>
     </div>
   );
 }
 
-function FlagsVisual() {
+function FlagsPanel() {
   return (
-    <div className="mini">
-      <div className="mini__banner">
-        <span>Urgent flag open · Harold W.</span>
-        <span className="mono">27:42</span>
+    <div className="ui">
+      <div className="ui__banner">
+        <span>Urgent · Harold Jenkins · acknowledge within 30 min</span>
+        <span>27:42</span>
       </div>
-      <div className="mini__row">
+      <div className="ui__row">
         <span>
-          <strong>BP 182/104</strong> <span className="mini__muted">· target &lt; 140/90</span>
+          <strong>Chest tightness on the stairs today</strong>{' '}
+          <span className="ui__muted">· told to call 911, call ended</span>
         </span>
-        <span className="mini__pill mini__pill--bad">Rule HTN-U1</span>
+        <span className="tag tag--urgent">Urgent</span>
       </div>
-      <div className="mini__row">
+      <div className="ui__row">
         <span>
-          <strong>Acknowledge</strong> <span className="mini__muted">· Rachel Okafor, RN</span>
+          <strong>Acknowledge</strong> <span className="ui__muted">· Rachel Okafor, RN</span>
         </span>
-        <span className="mini__pill mini__pill--info">Nurse call 09:40</span>
+        <span className="tag tag--info">Nurse call 10:40</span>
       </div>
-      <div className="mini__row">
-        <span className="mini__muted">If unacknowledged at 30:00 → alert Dr. Patel and practice manager</span>
+      <div className="ui__row">
+        <span className="ui__muted">If not acknowledged by 30:00, alert Dr. Patel and the practice manager.</span>
       </div>
     </div>
   );
 }
 
-function BillingVisual() {
+function BillingPanel() {
   return (
-    <div className="mini">
-      <div className="mini__note">
-        <b>Monthly care management note · October 2026</b>
-        {'\n'}Contact: AI check-in 06 Oct (reached) · Nurse call 06 Oct, 14 min
-        {'\n'}Flags: HTN-U1 urgent, acknowledged 09:31, resolved 09:58
+    <div className="ui">
+      <div className="ui__note">
+        <b>Care management note · October 2026 · Walter Nguyen (CCM)</b>
+        {'\n'}Contact: nurse call 14 Oct, 14 min, reached
+        {'\n'}Flags: none this month
         {'\n'}Time log: nurse call 14:02 · chart review 05:10 · coordination 03:21
-        {'\n'}<b>Counted: 22 min · Meets 20 minutes</b>
+        {'\n'}
+        <b>Counted: 22 min · Meets 20 minutes</b>
       </div>
-      <div className="mini__row">
+      <div className="ui__row">
         <span>
-          <strong>99490</strong> <span className="mini__muted">· CCM, first 20 min · $66.13</span>
+          <strong>99490</strong> <span className="ui__muted">· CCM, first 20 min · $66.13</span>
         </span>
-        <span className="mini__pill mini__pill--ok">Ready</span>
+        <span className="tag tag--ok">Ready</span>
       </div>
-      <div className="mini__row">
+      <div className="ui__row">
         <span>
-          <strong>G0557</strong> <span className="mini__muted">· APCM · $53.78</span>
+          <strong>G0557</strong> <span className="ui__muted">· APCM · Harold Jenkins</span>
         </span>
-        <span className="mini__pill mini__pill--warn">Held · awaiting attestation</span>
+        <span className="tag tag--concern">Held · awaiting attestation</span>
       </div>
     </div>
   );
 }
 
-const VISUALS = [EnrollVisual, CheckInVisual, FlagsVisual, BillingVisual];
+const PANELS = [EnrollPanel, CheckInPanel, FlagsPanel, BillingPanel];
 
 export function HowItWorks() {
   return (
-    <section className="section section--paper how" id="how">
+    <section className="section section--white" id="how">
       <div className="container">
         <SectionHeading
           eyebrow="How a month runs"
-          title={
-            <>
-              Four moves. <em>Every patient, every month.</em>
-            </>
-          }
-          lede="Cureloom is the operating rhythm behind CCM and APCM. It carries the schedule, the scripts, the rules and the paperwork, and hands your team the decisions."
+          title="Four moves, every patient, every month."
+          lede="Cureloom carries the schedule, the scripts, the rules and the paperwork, and hands your team the decisions."
         />
-        <ScrollStack
-          useWindowScroll
-          smoothScroll={false}
-          itemDistance={72}
-          itemStackDistance={18}
-          stackPosition="14%"
-          baseScale={0.9}
-          itemScale={0.035}
-          dimAmount={0.22}
-        >
+        <div className="steps">
           {STEPS.map((step, i) => {
-            const Visual = VISUALS[i];
+            const Panel = PANELS[i];
             return (
-              <ScrollStackItem key={step.kicker} itemClassName={i === STEPS.length - 1 ? 'scroll-stack-card--dark' : ''}>
-                <div className="step">
+              <AnimatedContent key={step.number} className="step" distance={28} duration={0.9} ease="power2.out" threshold={0.15}>
+                <div className="step__text">
                   <div>
-                    <div className="step__kicker">{step.kicker}</div>
-                    <h3 className="step__title">{step.title}</h3>
-                    <p className="step__body">{step.body}</p>
-                    <ul className="step__bullets">
-                      {step.bullets.map((b) => (
-                        <li key={b}>
-                          <Check size={16} /> {b}
-                        </li>
-                      ))}
-                    </ul>
+                    <span className="step__num">{step.number}</span>
+                    <span className="step__kicker">{step.kicker}</span>
                   </div>
-                  <div className="step__visual" aria-hidden="true">
-                    <Visual />
-                  </div>
+                  <h3 className="display-3 step__title">{step.title}</h3>
+                  <p className="step__body">{step.body}</p>
+                  <ul className="step__bullets">
+                    {step.bullets.map((b) => (
+                      <li key={b}>
+                        <Check size={15} /> {b}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </ScrollStackItem>
+                <div className="panel" aria-hidden="true">
+                  <Panel />
+                </div>
+              </AnimatedContent>
             );
           })}
-        </ScrollStack>
+        </div>
       </div>
     </section>
   );
