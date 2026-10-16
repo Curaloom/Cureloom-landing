@@ -1,0 +1,54 @@
+import { LogoMark } from '../components/Logo';
+import { NAV_ITEMS, SITE } from '../site';
+
+export function Footer() {
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer__grid">
+          <div>
+            <div className="footer__brand">
+              <LogoMark size={28} /> {SITE.name}
+            </div>
+            <p className="footer__tag">{SITE.tagline}</p>
+          </div>
+          <div className="footer__col">
+            <h4>Product</h4>
+            <ul>
+              {NAV_ITEMS.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="footer__col">
+            <h4>Programs</h4>
+            <ul>
+              <li>Chronic Care Management (99490)</li>
+              <li>Advanced Primary Care Management (G0557)</li>
+              <li>APCM for QMB patients (G0558)</li>
+            </ul>
+          </div>
+          <div className="footer__col">
+            <h4>Contact</h4>
+            <ul>
+              <li>
+                <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>
+              </li>
+              <li>
+                <a href={SITE.bookingHref}>Book a walkthrough</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer__bottom">
+          <span>
+            © {SITE.year} {SITE.name}. {SITE.slogan}
+          </span>
+          <span>Cureloom is a care-management workflow tool. It does not give medical advice or make clinical decisions.</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
