@@ -1,5 +1,6 @@
 import SplitText from '../components/reactbits/TextAnimations/SplitText/SplitText';
 import AnimatedContent from '../components/reactbits/Animations/AnimatedContent/AnimatedContent';
+import Silk from '../components/reactbits/Backgrounds/Silk/Silk';
 import { AppWindow } from '../components/AppWindow';
 import { ArrowRight } from '../components/icons';
 import { FACTS, HERO, SITE } from '../site';
@@ -7,6 +8,24 @@ import { FACTS, HERO, SITE } from '../site';
 export function Hero() {
   return (
     <section className="hero" id="top">
+      <div className="hero__bg" aria-hidden="true">
+        <Silk
+          lightMode
+          speed={2}
+          scale={1.35}
+          color="#cfe0d2"
+          sheenColor="#ffffff"
+          noiseIntensity={0.6}
+          rotation={0.35}
+          sheen={0.35}
+          depth={0.25}
+          glow={0.15}
+          ripple={0.6}
+          wave={0.7}
+          fade={0}
+          interactionStrength={0.7}
+        />
+      </div>
       <div className="container">
         <div className="hero__text">
           <AnimatedContent distance={16} duration={0.7} ease="power2.out" trigger="mount">
@@ -40,10 +59,6 @@ export function Hero() {
 
         <AnimatedContent className="hero__media" distance={40} duration={1.1} ease="power2.out" delay={0.55} trigger="mount">
           <AppWindow />
-          <p className="hero__caption">
-            The nurse's Today queue in Cureloom, ordered by what needs attention first. Patients shown are from a
-            simulated practice.
-          </p>
         </AnimatedContent>
 
         <AnimatedContent className="facts" stagger={0.1} distance={20} duration={0.8} ease="power2.out" threshold={0.2}>
