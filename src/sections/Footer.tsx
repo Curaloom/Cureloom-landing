@@ -1,4 +1,4 @@
-import { LogoMark } from '../components/Logo';
+import { Wordmark } from '../components/Logo';
 import { NAV_ITEMS, SITE } from '../site';
 
 export function Footer() {
@@ -7,9 +7,7 @@ export function Footer() {
       <div className="container">
         <div className="footer__grid">
           <div>
-            <div className="footer__brand">
-              <LogoMark size={28} /> {SITE.name}
-            </div>
+            <Wordmark size={22} color="#15231d" />
             <p className="footer__tag">{SITE.tagline}</p>
           </div>
           <div className="footer__col">
@@ -37,7 +35,7 @@ export function Footer() {
                 <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>
               </li>
               <li>
-                <a href={SITE.bookingHref}>Book a walkthrough</a>
+                <a href={SITE.bookingHref}>Request a walkthrough</a>
               </li>
             </ul>
           </div>

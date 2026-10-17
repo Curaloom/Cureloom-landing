@@ -6,7 +6,7 @@ export const SITE = {
   name: 'Cureloom',
   slogan: 'Prevention first.',
   tagline: 'Chronic care management that checks in before the crisis does.',
-  /** Where "Book a walkthrough" buttons go. Swap for a scheduling link when you have one. */
+  /** Where "Request a walkthrough" buttons go. Swap for a scheduling link when you have one. */
   bookingHref: '#contact',
   /** Placeholder: replace with the real inbox. */
   contactEmail: 'hello@cureloom.com',
@@ -16,90 +16,76 @@ export const SITE = {
 export const NAV_ITEMS = [
   { label: 'How it works', href: '#how' },
   { label: 'Platform', href: '#platform' },
-  { label: 'Teams', href: '#teams' },
+  { label: 'For practices', href: '#teams' },
   { label: 'Principles', href: '#principles' },
 ];
 
-export const CONDITIONS = ['hypertension', 'type 2 diabetes', 'heart failure', 'COPD', 'chronic kidney disease', 'asthma'];
+export const HERO = {
+  eyebrow: 'Chronic care management for primary care',
+  title: 'Prevention first.',
+  sub: 'Cureloom runs the month between visits for patients living with chronic conditions. A check-in, a flag, a follow-up, a note. Every month, for every patient. Your nurses and physicians keep every decision.',
+  primary: 'Request a walkthrough',
+  secondary: 'See how a month runs',
+};
 
-export const BUILT_FOR = [
-  'Family medicine',
-  'Internal medicine',
-  'Geriatrics',
-  'Cardiology',
-  'Endocrinology',
-  'Pulmonology',
-  'FQHCs',
-  'Rural health clinics',
-  'ACOs',
-  'Concierge practices',
-];
-
-export const STATS = [
+export const FACTS = [
   {
-    value: 6,
-    suffix: ' in 10',
-    label: 'US adults live with at least one chronic condition.',
+    title: 'Built for CCM and APCM',
+    body: 'Monthly contact and clinical staff time tracked to the rule: 99490 and 99439, complex CCM, and APCM Levels 1 to 3.',
   },
   {
-    value: 4,
-    suffix: ' in 10',
-    label: 'live with two or more, the threshold for CCM. APCM starts at one.',
+    title: 'Urgent flags answered within 30 minutes',
+    body: 'An unacknowledged urgent flag escalates to the physician and the practice manager.',
   },
   {
-    value: 90,
-    suffix: '%',
-    label: 'of US health spending goes to people with chronic and mental health conditions.',
-  },
-  {
-    value: 30,
-    suffix: ' min',
-    label: 'is how long an urgent flag can wait in Cureloom before it escalates.',
+    title: 'Every minute counted, never typed',
+    body: 'Time comes from timers in exact seconds. There is no manual minute entry, and no nudging.',
   },
 ];
 
-export const STATS_SOURCE = 'Population figures: CDC, National Center for Chronic Disease Prevention and Health Promotion.';
+export const WHY = {
+  eyebrow: 'Why prevention',
+  title: 'Most of chronic care happens between visits. Most of it goes unseen.',
+  paragraphs: [
+    'A reading drifts, a prescription runs out, a symptom gets brushed off. Without a rhythm, the next time the practice hears about it is an emergency department visit.',
+    'Cureloom gives the month a shape. Each patient is checked on, each concern reaches a person who can act, and the work is documented as it happens rather than reconstructed at month end.',
+  ],
+  stats: [
+    { value: 6, suffix: ' in 10', label: 'US adults live with at least one chronic condition.' },
+    { value: 4, suffix: ' in 10', label: 'live with two or more, the threshold for CCM. APCM starts at one.' },
+    { value: 90, suffix: '%', label: 'of US health spending goes to people with chronic and mental health conditions.' },
+  ],
+  source: 'Source: CDC, National Center for Chronic Disease Prevention and Health Promotion.',
+};
 
 export const STEPS = [
   {
-    kicker: '01 · Enroll',
-    title: 'Start with the export you already have.',
-    body:
-      'Drop in the CSV or Excel export from your EHR. Cureloom maps the columns for you, reads the payer and the ICD-10 codes, and proposes CCM or an APCM tier for every patient, with a confidence score and the monthly revenue. Your operations lead approves, holds or rejects each row. The nurse sends a consent link or calls, fills the call setup, and the physician approves the care plan before the first check-in.',
-    bullets: [
-      'Column mapping that learns your export layout',
-      'Opportunity matrix with projected monthly recurring revenue',
-      'Rejected rows explained, never silently dropped',
-    ],
+    number: '01',
+    kicker: 'Enroll',
+    title: 'Start from the export you already have.',
+    body: 'Upload the CSV or Excel export from your EHR. Cureloom maps the columns, reads the payer and the ICD-10 codes, and proposes CCM or an APCM tier for each patient, with a confidence score and the monthly value. Your operations lead approves the cohort. The nurse takes consent by link or by phone and fills the call setup, and the physician approves each care plan before the first check-in.',
+    bullets: ['Column mapping that remembers your export layout', 'Row-level reasons, never a silent drop', 'A physician-approved care plan before any outreach'],
   },
   {
-    kicker: '02 · Check in',
-    title: 'Every patient hears from you, every month.',
-    body:
-      'Each patient gets a scheduled check-in: an AI call that follows a fixed, disclosed script, or a nurse call for those who prefer a person. Unanswered calls retry on their own. After three tries, a nurse task is created and, if consent allows, the patient gets a text saying you will try again.',
-    bullets: ['Identify → disclose → medications → symptoms → ER → readings → needs', 'An urgent answer jumps straight to the 911 / 988 line', 'Nothing is dialled or texted without consent'],
+    number: '02',
+    kicker: 'Check in',
+    title: 'Every patient hears from the practice, every month.',
+    body: 'Each patient gets a scheduled check-in: an automated call that follows a fixed, disclosed script, or a nurse call for people who prefer a person. Unanswered calls retry on their own. After three tries a nurse task is created and, if consent allows, the patient receives a text saying the practice will try again.',
+    bullets: ['Identify, disclose, medications, symptoms, ER visits, readings, needs', 'An urgent answer ends the script with a 911 or 988 instruction', 'No check-in call or text before consent'],
   },
   {
-    kicker: '03 · Act on flags',
-    title: 'The right person sees the right reading, in time.',
-    body:
-      'Answers and readings run through per-condition red-flag rules. Urgent flags page the nurse with a thirty-minute acknowledgement window. The nurse works four queues: consent pending, care not yet delivered, clinical urgency and pending steps. Anything that needs a physician goes to their escalation queue, where the time they spend is captured too.',
-    bullets: [
-      'Reading targets per condition, symptom rules per program',
-      'Routine concerns become tasks; urgent ones become flags',
-      'Physician escalations with their own timer and directives',
-    ],
+    number: '03',
+    kicker: 'Act on flags',
+    title: 'Concerns reach a person who can act, in time.',
+    body: 'Answers and readings run through per-condition rules. Routine concerns become tasks. Urgent flags page the nurse with a thirty-minute acknowledgement window, and if it lapses the physician and practice manager are alerted. The nurse works four queues: consent pending, care not yet delivered, clinical urgency and pending steps. What needs a physician goes to their escalation queue, where their time is counted too.',
+    bullets: ['Reading targets per condition, symptom rules per program', 'A banner on every screen until an urgent flag is acknowledged', 'Timers on nurse and physician work, so the minutes count themselves'],
   },
   {
-    kicker: '04 · Document and bill',
-    title: 'The month closes itself.',
-    body:
-      'Timed work counts itself, in exact seconds floored to whole minutes. At month end Cureloom drafts the note from stored rows and the physician attests. The billing ledger shows every claim line, from 99490 and 99439 to complex CCM and APCM Levels 1 to 3, with a micro-ledger of nurse and physician time behind each one.',
-    bullets: [
-      'Note: contact, flags, care work, tasks, itemised time log',
-      'Hold reasons in a fixed, auditable order',
-      'CMS-1500 flat file (CSV or Excel), checked before it leaves',
-    ],
+    number: '04',
+    kicker: 'Document and bill',
+    title: 'The month closes with a note, a signature and a reason for every hold.',
+    body: 'At month end Cureloom drafts each note from the stored record: the contact, the flags, the care work, the tasks and an itemised time log. The nurse files it and the physician attests. The billing ledger shows every claim line, with the nurse and physician time behind it, and exactly why anything is held.',
+    bullets: ['Notes drafted from events, not from memory', 'Hold reasons checked in a fixed, auditable order', 'A CMS-1500 file, checked before it leaves'],
   },
 ];
 
@@ -107,56 +93,53 @@ export const FEATURES = [
   {
     icon: 'note',
     title: 'Roster to revenue',
-    body: 'Upload the EHR export as CSV or Excel. Columns are mapped for you, payers and ICD-10 codes are read, and each patient gets a proposed program, a confidence score and a monthly value. Approve, hold or reject, and watch recurring revenue add up.',
+    body: 'The EHR export, mapped for you. Each patient gets a proposed program, a confidence score and a monthly value to approve, hold or reject.',
   },
   {
     icon: 'phone',
-    title: 'AI check-in calls',
-    body: 'Scripted, disclosed and consent-gated. The call gathers medications, symptoms, ER visits, readings and needs. It never diagnoses, and an urgent answer ends the script and starts an escalation.',
+    title: 'Automated check-in calls',
+    body: 'Scripted, disclosed and consent-gated. The call gathers medications, symptoms, ER visits, readings and needs. It never diagnoses.',
   },
   {
     icon: 'flag',
     title: 'Four queues, triaged',
-    body: 'Consent pending, care not yet delivered, clinical urgency and pending steps. Red-flag rules decide what is routine and what is urgent, and urgent flags carry a thirty-minute acknowledgement deadline visible on every screen.',
+    body: 'Consent pending, care not yet delivered, clinical urgency and pending steps. Urgent flags carry a visible acknowledgement deadline.',
   },
   {
     icon: 'stamp',
     title: 'Care plans, physician-approved',
-    body: 'Cureloom compiles the care plan from what is on record. The physician approves each version before the program starts, and every approval is signed with a chained hash so later changes show.',
+    body: 'Compiled from the record, approved by the physician before the program starts, and signed so any later change shows.',
   },
   {
     icon: 'clock',
     title: 'Time that counts itself',
-    body: 'Nurse and physician timers record exact seconds. Complex CCM applies only when the physician marks the month as complex. The UI shows the minutes and whether a requirement is met. It never nudges anyone to pad a number.',
+    body: 'Nurse and physician timers record exact seconds. Complex CCM applies only when the physician marks the month.',
   },
   {
     icon: 'shield',
     title: 'Claims that pass pre-flight',
-    body: 'A CMS-1500 flat file your billing module or clearinghouse can take today. Every claim is checked first: two chronic conditions where required, date of service, NPI check digits, clean fields. Anything that fails is listed, not shipped.',
+    body: 'A CMS-1500 file your billing module can take. Every claim is checked first; anything that fails is listed, not shipped.',
   },
 ];
 
 export const TEAMS = [
   {
     role: 'Nurses',
-    title: 'Your whole day, four queues.',
-    body: 'Consent pending, care not yet delivered, clinical urgency and pending steps. Open a patient and the month is laid out as nine steps, next to a clinical profile of every condition, reading and symptom over time.',
-    items: ['Triaged queues with live countdowns', 'Clinical profile per condition', 'Consent links, call scripts and timers built in'],
-    tint: 'teal',
+    title: 'The whole day in four queues.',
+    body: 'Consent pending, care not yet delivered, clinical urgency and pending steps. Open a patient and the month is laid out as nine steps, next to a clinical profile of every condition over time.',
+    items: ['Triaged queues with live countdowns', 'Clinical profile per condition', 'Consent links, scripts and timers built in'],
   },
   {
     role: 'Physicians',
-    title: 'Approve, escalate, attest.',
-    body: 'Approve each care plan before the program starts. Work escalations with a timer that counts your time toward the month, leave a directive for the nurse, and mark complex months. Then attest in one screen.',
-    items: ['Care plan approval queue', 'Escalations with time capture', 'Complexity mark for complex CCM'],
-    tint: 'sky',
+    title: 'Approve, review, attest.',
+    body: 'Approve each care plan before the program starts. Work escalations with a timer that counts your time, leave a directive for the nurse, and mark complex months. Then attest in one screen.',
+    items: ['Care plan approval queue', 'Escalations with time capture', 'Attestation in one signature'],
   },
   {
     role: 'Operations',
     title: 'Know what is billable, today.',
-    body: 'Turn the EHR export into an opportunity matrix, approve the cohort, and reconcile each month line by line. Export a CMS-1500 flat file that has already passed pre-flight checks.',
-    items: ['Column mapper and opportunity matrix', 'Billing ledger and micro-ledger', 'CMS-1500 export with pre-flight'],
-    tint: 'lilac',
+    body: 'Turn the EHR export into an opportunity matrix, approve the cohort, and reconcile each month line by line before the claims go out.',
+    items: ['Column mapper and opportunity matrix', 'Billing ledger and micro-ledger', 'CMS-1500 export with pre-flight checks'],
   },
 ];
 
@@ -171,11 +154,11 @@ export const PRINCIPLES = [
   },
   {
     title: 'Humans decide',
-    body: 'AI calls gather. Nurses and physicians judge. Cureloom compiles the care plan from the record, but a physician approves every version, and it never diagnoses or acts on a reading by itself.',
+    body: 'Automated calls gather. Nurses and physicians judge. Cureloom compiles the care plan from the record, but a physician approves every version, and it never diagnoses or acts on a reading by itself.',
   },
   {
     title: 'No nudges',
-    body: 'The product never gamifies minutes or pushes anyone toward a billing threshold. Queues show the care still owed, not the minutes to go. It shows the time, and whether a requirement is met.',
+    body: 'The product never gamifies minutes or pushes anyone toward a billing threshold. Queues show the care still owed, not the minutes to go.',
   },
   {
     title: 'Every action audited',
@@ -183,4 +166,9 @@ export const PRINCIPLES = [
   },
 ];
 
-export const MARQUEE = ['Prevention first', 'Check in', 'Flag early', 'Follow up', 'Document once', 'Bill with confidence'];
+export const CTA = {
+  title: 'See one month at one practice.',
+  body: 'Bring a roster export and thirty minutes. We will walk through a simulated month, from upload to the claims file, and show you exactly what your nurses, physicians and operations team would see.',
+  primary: 'Request a walkthrough',
+  secondary: 'Read how a month runs',
+};
