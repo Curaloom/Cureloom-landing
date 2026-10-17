@@ -318,18 +318,22 @@ section[id] {
   top: 0;
   z-index: 50;
   height: var(--nav-h);
-  background: rgba(247, 244, 238, 0.82);
+  background: rgba(247, 244, 238, 0.55);
   backdrop-filter: blur(14px) saturate(1.2);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
   border-bottom: 1px solid transparent;
-  transition: border-color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .nav--scrolled {
+  background: rgba(247, 244, 238, 0.85);
   border-bottom-color: var(--line);
 }
 
 .nav__inner {
+  position: relative;
   height: 100%;
   display: flex;
   align-items: center;
@@ -337,7 +341,16 @@ section[id] {
   gap: 24px;
 }
 
+.nav__inner > a {
+  display: flex;
+  align-items: center;
+}
+
 .nav__links {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   gap: 30px;
@@ -432,7 +445,25 @@ section[id] {
    Hero
    --------------------------------------------------------------------------- */
 .hero {
+  position: relative;
   padding: clamp(56px, 8vw, 112px) 0 0;
+}
+
+.hero__bg {
+  position: absolute;
+  top: calc(-1 * var(--nav-h));
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.4;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 92%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 92%);
+}
+
+.hero > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .hero__text {
@@ -445,6 +476,15 @@ section[id] {
 
 .hero__title .split-parent {
   display: block !important;
+}
+
+.hero__title.split-parent {
+  overflow: visible !important;
+}
+
+.hero__title .split-word-mask {
+  padding-top: 0.1em;
+  margin-top: -0.1em;
 }
 
 .hero__sub {
@@ -462,12 +502,6 @@ section[id] {
 
 .hero__media {
   margin-top: clamp(56px, 7vw, 96px);
-}
-
-.hero__caption {
-  margin-top: 16px;
-  font-size: 13.5px;
-  color: var(--muted);
 }
 
 /* ---------------------------------------------------------------------------
@@ -852,7 +886,7 @@ section[id] {
 
 .stats__source {
   margin-top: 20px;
-  font-size: 12.5px;
+  font-size: 11.5px;
   color: var(--muted);
 }
 
