@@ -15,7 +15,7 @@ export function Teams() {
               Three roles. <em>One shared month.</em>
             </>
           }
-          lede="Nurses, physicians and practice managers each get the view they need, built on the same events, the same timers and the same rules."
+          lede="Nurses, physicians and operations each get the view they need, built on the same events, the same timers and the same rules."
         />
         <AnimatedContent className="teams" stagger={0.1} distance={40} duration={0.9} threshold={0.15}>
           {TEAMS.map((t) => (

@@ -44,7 +44,7 @@ export const STATS = [
   {
     value: 4,
     suffix: ' in 10',
-    label: 'live with two or more, the threshold for CCM and APCM.',
+    label: 'live with two or more, the threshold for CCM. APCM starts at one.',
   },
   {
     value: 90,
@@ -63,10 +63,14 @@ export const STATS_SOURCE = 'Population figures: CDC, National Center for Chroni
 export const STEPS = [
   {
     kicker: '01 · Enroll',
-    title: 'Start with the roster you already have.',
+    title: 'Start with the export you already have.',
     body:
-      'Upload a patient list. Cureloom checks eligibility, two or more chronic conditions, a visit in the last twelve months and coverage, and flags the rows that need a human look. Your nurse walks each patient through the consent script and call setup. CCM or APCM, chosen per patient.',
-    bullets: ['Eligibility and consent, step by step', 'Rejected rows explained, never silently dropped', 'Caregivers, language and "prefers a human" recorded once'],
+      'Drop in the CSV or Excel export from your EHR. Cureloom maps the columns for you, reads the payer and the ICD-10 codes, and proposes CCM or an APCM tier for every patient, with a confidence score and the monthly revenue. Your operations lead approves, holds or rejects each row. The nurse sends a consent link or calls, fills the call setup, and the physician approves the care plan before the first check-in.',
+    bullets: [
+      'Column mapping that learns your export layout',
+      'Opportunity matrix with projected monthly recurring revenue',
+      'Rejected rows explained, never silently dropped',
+    ],
   },
   {
     kicker: '02 · Check in',
@@ -79,19 +83,32 @@ export const STEPS = [
     kicker: '03 · Act on flags',
     title: 'The right person sees the right reading, in time.',
     body:
-      'Answers and readings run through per-condition red-flag rules. Urgent flags page the nurse with a thirty-minute acknowledgement window. If it lapses, the physician and practice manager are alerted. Everything lands in one Today queue, with timers that count the work.',
-    bullets: ['Reading targets per condition, symptom rules per program', 'Routine concerns become tasks; urgent ones become flags', 'A red banner on every screen until it is acknowledged'],
+      'Answers and readings run through per-condition red-flag rules. Urgent flags page the nurse with a thirty-minute acknowledgement window. The nurse works four queues: consent pending, care not yet delivered, clinical urgency and pending steps. Anything that needs a physician goes to their escalation queue, where the time they spend is captured too.',
+    bullets: [
+      'Reading targets per condition, symptom rules per program',
+      'Routine concerns become tasks; urgent ones become flags',
+      'Physician escalations with their own timer and directives',
+    ],
   },
   {
     kicker: '04 · Document and bill',
     title: 'The month closes itself.',
     body:
-      'Timed work counts itself, in exact seconds floored to whole minutes. At month end Cureloom drafts the note from stored rows, the physician attests, and the billing list shows what is ready for 99490, G0557 or G0558, and exactly why anything is held.',
-    bullets: ['Note: contact, flags, care work, tasks, itemised time log', 'Hold reasons in a fixed, auditable order', 'CSV export for your billing team'],
+      'Timed work counts itself, in exact seconds floored to whole minutes. At month end Cureloom drafts the note from stored rows and the physician attests. The billing ledger shows every claim line, from 99490 and 99439 to complex CCM and APCM Levels 1 to 3, with a micro-ledger of nurse and physician time behind each one.',
+    bullets: [
+      'Note: contact, flags, care work, tasks, itemised time log',
+      'Hold reasons in a fixed, auditable order',
+      'CMS-1500 flat file (CSV or Excel), checked before it leaves',
+    ],
   },
 ];
 
 export const FEATURES = [
+  {
+    icon: 'note',
+    title: 'Roster to revenue',
+    body: 'Upload the EHR export as CSV or Excel. Columns are mapped for you, payers and ICD-10 codes are read, and each patient gets a proposed program, a confidence score and a monthly value. Approve, hold or reject, and watch recurring revenue add up.',
+  },
   {
     icon: 'phone',
     title: 'AI check-in calls',
@@ -99,51 +116,46 @@ export const FEATURES = [
   },
   {
     icon: 'flag',
-    title: 'Red-flag rules',
-    body: 'Per-condition reading targets and symptom rules decide what is routine and what is urgent. Urgent flags carry a thirty-minute acknowledgement deadline that is visible on every screen.',
+    title: 'Four queues, triaged',
+    body: 'Consent pending, care not yet delivered, clinical urgency and pending steps. Red-flag rules decide what is routine and what is urgent, and urgent flags carry a thirty-minute acknowledgement deadline visible on every screen.',
+  },
+  {
+    icon: 'stamp',
+    title: 'Care plans, physician-approved',
+    body: 'Cureloom compiles the care plan from what is on record. The physician approves each version before the program starts, and every approval is signed with a chained hash so later changes show.',
   },
   {
     icon: 'clock',
     title: 'Time that counts itself',
-    body: 'Timers run on nurse calls and chart work and record exact seconds. The UI shows the minutes and, once true, "Meets 20 minutes". It never nudges anyone to pad a number.',
-  },
-  {
-    icon: 'note',
-    title: 'Month-end notes, drafted',
-    body: 'Header, monthly contact with answers, flags, care management work, tasks and an itemised time log. Copy it into your EHR or file it from Cureloom, then send it for attestation.',
-  },
-  {
-    icon: 'stamp',
-    title: 'Attestation and billing',
-    body: 'Physicians attest in one screen. The billing list shows every patient as ready, held or not enrolled, with the hold reason spelled out and a CSV your billing team can use today.',
+    body: 'Nurse and physician timers record exact seconds. Complex CCM applies only when the physician marks the month as complex. The UI shows the minutes and whether a requirement is met. It never nudges anyone to pad a number.',
   },
   {
     icon: 'shield',
-    title: 'Audit trail and outbox',
-    body: 'Every command writes an event. Every message a patient would receive sits in a visible outbox first. Consent, opt-out and program changes are recorded with who did what, and when.',
+    title: 'Claims that pass pre-flight',
+    body: 'A CMS-1500 flat file your billing module or clearinghouse can take today. Every claim is checked first: two chronic conditions where required, date of service, NPI check digits, clean fields. Anything that fails is listed, not shipped.',
   },
 ];
 
 export const TEAMS = [
   {
     role: 'Nurses',
-    title: 'Your whole day, one queue.',
-    body: 'Calls, flags, tasks and timers in the order they need you. Open a patient and the month is laid out as nine steps, from consent to a filed note.',
-    items: ['Today queue with live countdowns', 'Nine-step patient month', 'Call scripts and consent text built in'],
+    title: 'Your whole day, four queues.',
+    body: 'Consent pending, care not yet delivered, clinical urgency and pending steps. Open a patient and the month is laid out as nine steps, next to a clinical profile of every condition, reading and symptom over time.',
+    items: ['Triaged queues with live countdowns', 'Clinical profile per condition', 'Consent links, call scripts and timers built in'],
     tint: 'teal',
   },
   {
     role: 'Physicians',
-    title: 'Attest in minutes, not evenings.',
-    body: 'See the flags, the note and the counted time for each patient, then sign. Urgent escalations reach you only when the nurse window lapses.',
-    items: ['Attestation queue', 'Flag history per patient', 'Escalation only when it matters'],
+    title: 'Approve, escalate, attest.',
+    body: 'Approve each care plan before the program starts. Work escalations with a timer that counts your time toward the month, leave a directive for the nurse, and mark complex months. Then attest in one screen.',
+    items: ['Care plan approval queue', 'Escalations with time capture', 'Complexity mark for complex CCM'],
     tint: 'sky',
   },
   {
-    role: 'Practice managers',
+    role: 'Operations',
     title: 'Know what is billable, today.',
-    body: 'Upload the roster, confirm eligibility, watch enrolment move, and read a billing list that tells you why a claim is held before the month ends.',
-    items: ['Roster upload with row-level errors', 'Billing list and CSV', 'Program fees per code, always visible'],
+    body: 'Turn the EHR export into an opportunity matrix, approve the cohort, and reconcile each month line by line. Export a CMS-1500 flat file that has already passed pre-flight checks.',
+    items: ['Column mapper and opportunity matrix', 'Billing ledger and micro-ledger', 'CMS-1500 export with pre-flight'],
     tint: 'lilac',
   },
 ];
@@ -155,15 +167,15 @@ export const PRINCIPLES = [
   },
   {
     title: 'Consent before contact',
-    body: 'Nothing is dialled, texted or sent to an EHR without consent. "Stop calling me" is honoured on the spot and confirmed by a person.',
+    body: 'No check-in call or text goes out without consent; before it, the only message is the consent request itself. Nothing is sent to an EHR. "Stop calling me" is honoured on the spot and confirmed by a person.',
   },
   {
     title: 'Humans decide',
-    body: 'AI calls gather. Nurses and physicians judge. Cureloom never diagnoses, never suggests a care plan, and never acts on a reading by itself.',
+    body: 'AI calls gather. Nurses and physicians judge. Cureloom compiles the care plan from the record, but a physician approves every version, and it never diagnoses or acts on a reading by itself.',
   },
   {
     title: 'No nudges',
-    body: 'The product never gamifies minutes or pushes anyone toward a billing threshold. It shows the time, and whether a requirement is met.',
+    body: 'The product never gamifies minutes or pushes anyone toward a billing threshold. Queues show the care still owed, not the minutes to go. It shows the time, and whether a requirement is met.',
   },
   {
     title: 'Every action audited',

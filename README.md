@@ -75,6 +75,6 @@ React Bits is licensed MIT + Commons Clause; the vendored files keep their origi
 
 ## Content notes
 
-- Product claims follow the Cureloom V1 prototype: AI check-in script, red-flag rules, the 30-minute urgent acknowledgement window, the 20-minute CCM threshold, month-end notes, attestation, and billing codes 99490, G0557 and G0558.
+- Product claims follow the Cureloom prototype: the EHR export column mapper and opportunity matrix, AI check-in script, red-flag rules, the 30-minute urgent acknowledgement window, the four nurse queues, physician care plan approval and escalations, the 20-minute CCM threshold, month-end notes, attestation, the CMS-1500 export with pre-flight checks, and billing codes 99490, 99439, 99487, 99489, G0556, G0557 and G0558.
 - Population statistics in the stats band cite the CDC. There are no customer testimonials or usage metrics on the page; add them only once they are real.
 - Patient names and readings in the hero mock and step illustrations are fictional.

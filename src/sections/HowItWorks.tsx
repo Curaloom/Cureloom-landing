@@ -7,32 +7,32 @@ function EnrollVisual() {
   return (
     <div className="mini">
       <div className="mini__row">
-        <strong>october-roster.csv</strong>
-        <span className="mini__muted">15 rows</span>
+        <strong>october-roster.xlsx</strong>
+        <span className="mini__muted">15 rows · 19 columns mapped</span>
       </div>
       <div className="mini__row">
         <span>
-          <strong>Harold W.</strong> <span className="mini__muted">· I50.9, N18.3 · visit 02 Sep</span>
+          <strong>Maria D.</strong> <span className="mini__muted">· E11.9, I10 · Medicare + Medicaid (QMB)</span>
         </span>
-        <span className="mini__pill mini__pill--ok">Eligible</span>
+        <span className="mini__pill mini__pill--info">APCM L3 · G0558</span>
       </div>
       <div className="mini__row">
         <span>
-          <strong>Maria D.</strong> <span className="mini__muted">· E11.9, I10 · QMB</span>
+          <strong>Carl M.</strong> <span className="mini__muted">· I10, E78.5 · Medicare Advantage</span>
         </span>
-        <span className="mini__pill mini__pill--info">APCM · G0558</span>
+        <span className="mini__pill mini__pill--ok">CCM · 99490</span>
       </div>
       <div className="mini__row">
         <span>
-          <strong>Row 12</strong> <span className="mini__muted">· last visit 14 months ago</span>
+          <strong>Frank O.</strong> <span className="mini__muted">· one chronic condition</span>
+        </span>
+        <span className="mini__pill mini__pill--info">APCM L1 · G0556</span>
+      </div>
+      <div className="mini__row">
+        <span>
+          <strong>Betty H.</strong> <span className="mini__muted">· last visit 14 months ago</span>
         </span>
         <span className="mini__pill mini__pill--warn">Needs a visit</span>
-      </div>
-      <div className="mini__row">
-        <span>
-          <strong>Row 14</strong> <span className="mini__muted">· one qualifying code</span>
-        </span>
-        <span className="mini__pill mini__pill--bad">Not eligible</span>
       </div>
     </div>
   );
@@ -100,9 +100,15 @@ function BillingVisual() {
       </div>
       <div className="mini__row">
         <span>
-          <strong>G0557</strong> <span className="mini__muted">· APCM · $53.78</span>
+          <strong>G0557</strong> <span className="mini__muted">· APCM Level 2 · $53.78</span>
         </span>
         <span className="mini__pill mini__pill--warn">Held · awaiting attestation</span>
+      </div>
+      <div className="mini__row">
+        <span>
+          <strong>CMS-1500</strong> <span className="mini__muted">· 5 claims clean · 1 excluded</span>
+        </span>
+        <span className="mini__pill mini__pill--info">Pre-flight</span>
       </div>
     </div>
   );

@@ -25,9 +25,9 @@ export function Footer() {
           <div className="footer__col">
             <h4>Programs</h4>
             <ul>
-              <li>Chronic Care Management (99490)</li>
-              <li>Advanced Primary Care Management (G0557)</li>
-              <li>APCM for QMB patients (G0558)</li>
+              <li>Chronic Care Management (99490, 99439)</li>
+              <li>Complex CCM (99487, 99489)</li>
+              <li>Advanced Primary Care Management, Levels 1–3 (G0556, G0557, G0558)</li>
             </ul>
           </div>
           <div className="footer__col">
