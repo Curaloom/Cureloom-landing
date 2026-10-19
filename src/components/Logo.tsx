@@ -25,7 +25,7 @@ export function Wordmark({ color = 'currentColor', size = 22 }: { color?: string
   return (
     <span className="wordmark" style={{ color, fontSize: size }}>
       <LogoMark size={Math.round(size * 1.1)} color={color} />
-      <span>Cureloom</span>
+      <span>Curalooms</span>
     </span>
   );
 }

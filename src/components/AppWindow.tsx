@@ -2,7 +2,7 @@ import { LogoMark } from './Logo';
 
 /**
  * A calm, designed rendering of the nurse's Today queue. Names and readings are fictional,
- * taken from the simulated practice used in the Cureloom prototype.
+ * taken from the simulated practice used in the Curalooms prototype.
  */
 const ROWS = [
   {
@@ -81,7 +81,7 @@ export function AppWindow() {
       <div className="app__bar">
         <div className="app__brand">
           <LogoMark size={18} />
-          Cureloom
+          Curalooms
           <small>Westfield Family Medicine</small>
         </div>
         <div className="app__right">

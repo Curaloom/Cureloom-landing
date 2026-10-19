@@ -125,7 +125,7 @@ export function HowItWorks() {
         <SectionHeading
           eyebrow="How a month runs"
           title="Four moves, every patient, every month."
-          lede="Cureloom carries the schedule, the scripts, the rules and the paperwork, and hands your team the decisions."
+          lede="Curalooms carries the schedule, the scripts, the rules and the paperwork, and hands your team the decisions."
         />
         <div className="steps">
           {STEPS.map((step, i) => {

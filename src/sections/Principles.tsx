@@ -10,7 +10,7 @@ export function Principles() {
           <SectionHeading
             eyebrow="What we hold to"
             title="Care software should be quietly trustworthy."
-            lede="These are the decisions we made where the rules were silent. They are not settings. They are how Cureloom behaves."
+            lede="These are the decisions we made where the rules were silent. They are not settings. They are how Curalooms behaves."
           />
         </div>
         <AnimatedContent className="principles__list" role="list" stagger={0.08} distance={20} duration={0.8} ease="power2.out" threshold={0.1}>

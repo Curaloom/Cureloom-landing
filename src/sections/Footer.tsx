@@ -44,7 +44,7 @@ export function Footer() {
           <span>
             © {SITE.year} {SITE.name}. {SITE.slogan}
           </span>
-          <span>Cureloom is a care-management workflow tool. It does not give medical advice or make clinical decisions.</span>
+          <span>Curalooms is a care-management workflow tool. It does not give medical advice or make clinical decisions.</span>
         </div>
       </div>
     </footer>

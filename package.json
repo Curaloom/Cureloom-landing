@@ -1,8 +1,8 @@
 {
-  "name": "cureloom-landing",
+  "name": "curalooms-landing",
   "version": "0.1.0",
   "private": true,
-  "description": "Marketing landing page for Cureloom, the prevention-first chronic care management platform.",
+  "description": "Marketing landing page for Curalooms, the prevention-first chronic care management platform.",
   "type": "module",
   "scripts": {
     "dev": "vite",

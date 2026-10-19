@@ -1,15 +1,15 @@
 /**
- * Site-wide copy and configuration for the Cureloom landing page.
+ * Site-wide copy and configuration for the Curalooms landing page.
  * Replace the placeholder contact values before going live.
  */
 export const SITE = {
-  name: 'Cureloom',
+  name: 'Curalooms',
   slogan: 'Prevention first.',
   tagline: 'Chronic care management that checks in before the crisis does.',
   /** Where "Request a walkthrough" buttons go. Swap for a scheduling link when you have one. */
   bookingHref: '#contact',
   /** Placeholder: replace with the real inbox. */
-  contactEmail: 'hello@cureloom.com',
+  contactEmail: 'hello@curalooms.com',
   year: new Date().getFullYear(),
 } as const;
 
@@ -23,7 +23,7 @@ export const NAV_ITEMS = [
 export const HERO = {
   eyebrow: 'Chronic care management for primary care',
   title: 'Prevention first.',
-  sub: 'Cureloom runs the month between visits for patients living with chronic conditions. A check-in, a flag, a follow-up, a note. Every month, for every patient. Your nurses and physicians keep every decision.',
+  sub: 'Curalooms runs the month between visits for patients living with chronic conditions. A check-in, a flag, a follow-up, a note. Every month, for every patient. Your nurses and physicians keep every decision.',
   primary: 'Request a walkthrough',
   secondary: 'See how a month runs',
 };
@@ -48,7 +48,7 @@ export const WHY = {
   title: 'Most of chronic care happens between visits. Most of it goes unseen.',
   paragraphs: [
     'A reading drifts, a prescription runs out, a symptom gets brushed off. Without a rhythm, the next time the practice hears about it is an emergency department visit.',
-    'Cureloom gives the month a shape. Each patient is checked on, each concern reaches a person who can act, and the work is documented as it happens rather than reconstructed at month end.',
+    'Curalooms gives the month a shape. Each patient is checked on, each concern reaches a person who can act, and the work is documented as it happens rather than reconstructed at month end.',
   ],
   stats: [
     { value: 6, suffix: ' in 10', label: 'US adults live with at least one chronic condition.' },
@@ -63,7 +63,7 @@ export const STEPS = [
     number: '01',
     kicker: 'Enroll',
     title: 'Start from the export you already have.',
-    body: 'Upload the CSV or Excel export from your EHR. Cureloom maps the columns, reads the payer and the ICD-10 codes, and proposes CCM or an APCM tier for each patient, with a confidence score and the monthly value. Your operations lead approves the cohort. The nurse takes consent by link or by phone and fills the call setup, and the physician approves each care plan before the first check-in.',
+    body: 'Upload the CSV or Excel export from your EHR. Curalooms maps the columns, reads the payer and the ICD-10 codes, and proposes CCM or an APCM tier for each patient, with a confidence score and the monthly value. Your operations lead approves the cohort. The nurse takes consent by link or by phone and fills the call setup, and the physician approves each care plan before the first check-in.',
     bullets: ['Column mapping that remembers your export layout', 'Row-level reasons, never a silent drop', 'A physician-approved care plan before any outreach'],
   },
   {
@@ -84,7 +84,7 @@ export const STEPS = [
     number: '04',
     kicker: 'Document and bill',
     title: 'The month closes with a note, a signature and a reason for every hold.',
-    body: 'At month end Cureloom drafts each note from the stored record: the contact, the flags, the care work, the tasks and an itemised time log. The nurse files it and the physician attests. The billing ledger shows every claim line, with the nurse and physician time behind it, and exactly why anything is held.',
+    body: 'At month end Curalooms drafts each note from the stored record: the contact, the flags, the care work, the tasks and an itemised time log. The nurse files it and the physician attests. The billing ledger shows every claim line, with the nurse and physician time behind it, and exactly why anything is held.',
     bullets: ['Notes drafted from events, not from memory', 'Hold reasons checked in a fixed, auditable order', 'A CMS-1500 file, checked before it leaves'],
   },
 ];
@@ -154,7 +154,7 @@ export const PRINCIPLES = [
   },
   {
     title: 'Humans decide',
-    body: 'Automated calls gather. Nurses and physicians judge. Cureloom compiles the care plan from the record, but a physician approves every version, and it never diagnoses or acts on a reading by itself.',
+    body: 'Automated calls gather. Nurses and physicians judge. Curalooms compiles the care plan from the record, but a physician approves every version, and it never diagnoses or acts on a reading by itself.',
   },
   {
     title: 'No nudges',
