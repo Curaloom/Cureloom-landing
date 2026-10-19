@@ -21,17 +21,17 @@ export const NAV_ITEMS = [
 ];
 
 export const HERO = {
-  eyebrow: 'AI-assisted CCM and APCM program management',
+  eyebrow: 'AI-assisted chronic care management',
   title: 'Prevention first.',
-  sub: 'Curalooms runs your CCM and APCM programs from enrollment to claim. An AI caller makes the APCM check-ins and flags what it hears. Your nurses and physicians make every clinical call.',
+  sub: 'An AI workflow that runs your CCM and APCM programs from enrollment to claim and lifts the load off your team. Your nurses and physicians make every clinical call.',
   primary: 'Request a walkthrough',
   secondary: 'See how a month runs',
 };
 
 export const FACTS = [
   {
-    title: 'AI check-in calls for APCM',
-    body: 'A scripted AI caller makes the monthly call. It never diagnoses.',
+    title: 'AI-assisted workflow',
+    body: 'Makes the monthly calls, flags concerns, drafts notes and prepares claims. It never diagnoses.',
   },
   {
     title: 'Urgent flags answered within 30 minutes',
@@ -48,7 +48,7 @@ export const WHY = {
   title: 'Most chronic care happens between visits, when nobody at the practice is watching.',
   paragraphs: [
     'A blood pressure creeps up, a prescription runs out, a symptom gets shrugged off. If nobody checks in, the practice hears about it in the ER.',
-    'No practice has staff to call everyone every month. An AI caller takes the APCM check-ins, so nurses spend their time on CCM calls and the concerns the AI finds.',
+    'No practice has staff to call everyone every month. An AI-assisted workflow handles the monthly check-ins, so nurses spend their time on the concerns that need them.',
   ],
   stats: [
     { value: 6, suffix: ' in 10', label: 'US adults live with at least one chronic condition.' },
@@ -97,7 +97,7 @@ export const FEATURES = [
   },
   {
     icon: 'phone',
-    title: 'AI check-in calls',
+    title: 'AI-assisted check-in calls',
     body: 'A scripted AI caller covers medications, symptoms, ER visits and readings, with consent.',
   },
   {
