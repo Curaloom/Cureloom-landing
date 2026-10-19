@@ -21,34 +21,34 @@ export const NAV_ITEMS = [
 ];
 
 export const HERO = {
-  eyebrow: 'Chronic care management for primary care',
+  eyebrow: 'AI-assisted chronic care management',
   title: 'Prevention first.',
-  sub: 'Curalooms runs the month between visits for patients living with chronic conditions. A check-in, a flag, a follow-up, a note. Every month, for every patient. Your nurses and physicians keep every decision.',
+  sub: 'An AI workflow that runs your CCM and APCM programs from enrollment to claim and lifts the load off your team. Your nurses and physicians make every clinical call.',
   primary: 'Request a walkthrough',
   secondary: 'See how a month runs',
 };
 
 export const FACTS = [
   {
-    title: 'Built for CCM and APCM',
-    body: 'Monthly contact and clinical staff time tracked to the rule: 99490 and 99439, complex CCM, and APCM Levels 1 to 3.',
+    title: 'AI-assisted workflow',
+    body: 'Makes the monthly calls, flags concerns, drafts notes and prepares claims. It never diagnoses.',
   },
   {
     title: 'Urgent flags answered within 30 minutes',
-    body: 'An unacknowledged urgent flag escalates to the physician and the practice manager.',
+    body: 'If no one acknowledges an urgent flag, it goes to the physician and practice manager.',
   },
   {
-    title: 'Every minute counted, never typed',
-    body: 'Time comes from timers in exact seconds. There is no manual minute entry, and no nudging.',
+    title: 'Built for CCM and APCM',
+    body: 'Contact and staff time tracked to the rule: 99490, 99439, complex CCM and APCM Levels 1 to 3.',
   },
 ];
 
 export const WHY = {
   eyebrow: 'Why prevention',
-  title: 'Most of chronic care happens between visits. Most of it goes unseen.',
+  title: 'Most chronic care happens between visits, when nobody at the practice is watching.',
   paragraphs: [
-    'A reading drifts, a prescription runs out, a symptom gets brushed off. Without a rhythm, the next time the practice hears about it is an emergency department visit.',
-    'Curalooms gives the month a shape. Each patient is checked on, each concern reaches a person who can act, and the work is documented as it happens rather than reconstructed at month end.',
+    'A blood pressure creeps up, a prescription runs out, a symptom gets shrugged off. If nobody checks in, the practice hears about it in the ER.',
+    'No practice has staff to call everyone every month. An AI-assisted workflow handles the monthly check-ins, so nurses spend their time on the concerns that need them.',
   ],
   stats: [
     { value: 6, suffix: ' in 10', label: 'US adults live with at least one chronic condition.' },
@@ -62,30 +62,30 @@ export const STEPS = [
   {
     number: '01',
     kicker: 'Enroll',
-    title: 'Start from the export you already have.',
-    body: 'Upload the CSV or Excel export from your EHR. Curalooms maps the columns, reads the payer and the ICD-10 codes, and proposes CCM or an APCM tier for each patient, with a confidence score and the monthly value. Your operations lead approves the cohort. The nurse takes consent by link or by phone and fills the call setup, and the physician approves each care plan before the first check-in.',
-    bullets: ['Column mapping that remembers your export layout', 'Row-level reasons, never a silent drop', 'A physician-approved care plan before any outreach'],
+    title: 'Start with the export you already have.',
+    body: 'Upload your EHR export. Curalooms reads payer and ICD-10 codes and suggests CCM or an APCM tier, with a confidence score and monthly value. Operations approves, a nurse gets consent, and the physician approves each care plan.',
+    bullets: ['Column mapping that remembers your export', 'No outreach before the care plan is approved'],
   },
   {
     number: '02',
     kicker: 'Check in',
-    title: 'Every patient hears from the practice, every month.',
-    body: 'Each patient gets a scheduled check-in: an automated call that follows a fixed, disclosed script, or a nurse call for people who prefer a person. Unanswered calls retry on their own. After three tries a nurse task is created and, if consent allows, the patient receives a text saying the practice will try again.',
-    bullets: ['Identify, disclose, medications, symptoms, ER visits, readings, needs', 'An urgent answer ends the script with a 911 or 988 instruction', 'No check-in call or text before consent'],
+    title: 'Every patient hears from the practice each month.',
+    body: 'APCM patients get a call from an AI caller that follows a fixed script and says it is automated. CCM patients, and anyone who prefers a person, get a nurse call. After three unanswered tries a nurse gets a task.',
+    bullets: ['An urgent answer ends the call with a 911 or 988 instruction', 'No call or text before consent'],
   },
   {
     number: '03',
     kicker: 'Act on flags',
-    title: 'Concerns reach a person who can act, in time.',
-    body: 'Answers and readings run through per-condition rules. Routine concerns become tasks. Urgent flags page the nurse with a thirty-minute acknowledgement window, and if it lapses the physician and practice manager are alerted. The nurse works four queues: consent pending, care not yet delivered, clinical urgency and pending steps. What needs a physician goes to their escalation queue, where their time is counted too.',
-    bullets: ['Reading targets per condition, symptom rules per program', 'A banner on every screen until an urgent flag is acknowledged', 'Timers on nurse and physician work, so the minutes count themselves'],
+    title: 'Concerns reach someone who can act on them.',
+    body: 'Answers and readings are checked against rules for each condition. Routine concerns become tasks. Urgent flags page the nurse, who has thirty minutes to acknowledge before the physician is alerted.',
+    bullets: ['A banner on every screen until an urgent flag is acknowledged', 'Nurse and physician time tracked by timers'],
   },
   {
     number: '04',
     kicker: 'Document and bill',
-    title: 'The month closes with a note, a signature and a reason for every hold.',
-    body: 'At month end Curalooms drafts each note from the stored record: the contact, the flags, the care work, the tasks and an itemised time log. The nurse files it and the physician attests. The billing ledger shows every claim line, with the nurse and physician time behind it, and exactly why anything is held.',
-    bullets: ['Notes drafted from events, not from memory', 'Hold reasons checked in a fixed, auditable order', 'A CMS-1500 file, checked before it leaves'],
+    title: 'Each month ends with a signed note and a reason for every held claim.',
+    body: 'At month end Curalooms drafts each note from the record, with an itemized time log. The nurse files it, the physician attests, and the ledger shows every claim line and why any is held.',
+    bullets: ['Hold reasons checked in a fixed, auditable order', 'CMS-1500 file checked before it goes out'],
   },
 ];
 
@@ -93,82 +93,82 @@ export const FEATURES = [
   {
     icon: 'note',
     title: 'Roster to revenue',
-    body: 'The EHR export, mapped for you. Each patient gets a proposed program, a confidence score and a monthly value to approve, hold or reject.',
+    body: 'Each patient gets a suggested program, confidence score and monthly value to approve.',
   },
   {
     icon: 'phone',
-    title: 'Automated check-in calls',
-    body: 'Scripted, disclosed and consent-gated. The call gathers medications, symptoms, ER visits, readings and needs. It never diagnoses.',
+    title: 'AI-assisted check-in calls',
+    body: 'A scripted AI caller covers medications, symptoms, ER visits and readings, with consent.',
   },
   {
     icon: 'flag',
-    title: 'Four queues, triaged',
-    body: 'Consent pending, care not yet delivered, clinical urgency and pending steps. Urgent flags carry a visible acknowledgement deadline.',
+    title: 'Four work queues',
+    body: 'Consent pending, care not yet delivered, clinical urgency, pending steps.',
   },
   {
     icon: 'stamp',
-    title: 'Care plans, physician-approved',
-    body: 'Compiled from the record, approved by the physician before the program starts, and signed so any later change shows.',
+    title: 'Physician-approved care plans',
+    body: 'Compiled from the record, approved before the program starts.',
   },
   {
     icon: 'clock',
-    title: 'Time that counts itself',
-    body: 'Nurse and physician timers record exact seconds. Complex CCM applies only when the physician marks the month.',
+    title: 'Automatic time tracking',
+    body: 'Timers record nurse and physician time to the second. AI call time is never counted.',
   },
   {
     icon: 'shield',
-    title: 'Claims that pass pre-flight',
-    body: 'A CMS-1500 file your billing module can take. Every claim is checked first; anything that fails is listed, not shipped.',
+    title: 'Claims checked first',
+    body: 'A CMS-1500 file for your billing module. Failed claims are listed, not sent.',
   },
 ];
 
 export const TEAMS = [
   {
     role: 'Nurses',
-    title: 'The whole day in four queues.',
-    body: 'Consent pending, care not yet delivered, clinical urgency and pending steps. Open a patient and the month is laid out as nine steps, next to a clinical profile of every condition over time.',
-    items: ['Triaged queues with live countdowns', 'Clinical profile per condition', 'Consent links, scripts and timers built in'],
+    title: 'Your day, in four queues.',
+    body: 'Open a patient and see the month as nine steps, next to each condition\'s clinical history.',
+    items: ['Queues sorted by urgency, with live countdowns', 'Consent links, scripts and timers built in'],
   },
   {
     role: 'Physicians',
     title: 'Approve, review, attest.',
-    body: 'Approve each care plan before the program starts. Work escalations with a timer that counts your time, leave a directive for the nurse, and mark complex months. Then attest in one screen.',
-    items: ['Care plan approval queue', 'Escalations with time capture', 'Attestation in one signature'],
+    body: 'Approve care plans, work escalations, leave directives, mark complex months, then attest on one screen.',
+    items: ['Care plan approval queue', 'One-signature attestation'],
   },
   {
     role: 'Operations',
-    title: 'Know what is billable, today.',
-    body: 'Turn the EHR export into an opportunity matrix, approve the cohort, and reconcile each month line by line before the claims go out.',
-    items: ['Column mapper and opportunity matrix', 'Billing ledger and micro-ledger', 'CMS-1500 export with pre-flight checks'],
+    title: 'See what is billable today.',
+    body: 'Turn the EHR export into a billable-opportunity matrix, then reconcile each month before claims go out.',
+    items: ['Billing ledger, line by line', 'CMS-1500 export with pre-flight checks'],
   },
 ];
 
 export const PRINCIPLES = [
   {
     title: 'Prevention first',
-    body: 'Most chronic care is reactive. We built the month as a rhythm so the next touchpoint is a check-in, not an emergency room.',
+    body: 'Most chronic care is reactive. We built the month so the next touchpoint is a check-in, not an ER visit.',
   },
   {
     title: 'Consent before contact',
-    body: 'No check-in call or text goes out without consent; before it, the only message is the consent request itself. Nothing is sent to an EHR. "Stop calling me" is honoured on the spot and confirmed by a person.',
+    body: 'No call or text goes out until the patient consents. "Stop calling me" stops the calls, and staff follow up.',
   },
   {
     title: 'Humans decide',
-    body: 'Automated calls gather. Nurses and physicians judge. Curalooms compiles the care plan from the record, but a physician approves every version, and it never diagnoses or acts on a reading by itself.',
+    body: 'The AI only collects answers. It doesn\'t diagnose, and a physician approves every care plan.',
   },
   {
     title: 'No nudges',
-    body: 'The product never gamifies minutes or pushes anyone toward a billing threshold. Queues show the care still owed, not the minutes to go.',
+    body: 'No minute scores, no pushing staff toward a billing threshold. AI call time is never counted.',
   },
   {
     title: 'Every action audited',
-    body: 'Each command writes an event you can read later. If a claim is held, the reason is on the screen, in the order the rules were checked.',
+    body: 'Every action is logged. A held claim shows its reason on screen.',
   },
 ];
 
 export const CTA = {
   title: 'See one month at one practice.',
-  body: 'Bring a roster export and thirty minutes. We will walk through a simulated month, from upload to the claims file, and show you exactly what your nurses, physicians and operations team would see.',
+  body: 'Bring a roster export and thirty minutes. We\'ll run a simulated month from upload to claims file, AI calls included.',
   primary: 'Request a walkthrough',
   secondary: 'Read how a month runs',
 };
