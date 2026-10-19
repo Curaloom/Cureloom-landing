@@ -10,7 +10,7 @@ export function Principles() {
           <SectionHeading
             eyebrow="What we hold to"
             title="How Curalooms behaves."
-            lede="Where the billing rules didn't say what to do, we made these calls. They're built in, not settings you can change."
+            lede="Where the billing rules didn't say what to do, we made these calls. They're built in, not settings."
           />
         </div>
         <AnimatedContent className="principles__list" role="list" stagger={0.08} distance={20} duration={0.8} ease="power2.out" threshold={0.1}>

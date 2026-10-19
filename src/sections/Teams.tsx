@@ -10,7 +10,7 @@ export function Teams() {
         <SectionHeading
           eyebrow="For the whole practice"
           title="Three roles, one shared month."
-          lede="Nurses, physicians and operations each get the view they need, built on the same events, the same timers and the same rules."
+          lede="Nurses, physicians and operations each get their own view of the same record."
         />
         <AnimatedContent className="teams" stagger={0.1} distance={24} duration={0.8} ease="power2.out" threshold={0.15}>
           {TEAMS.map((t) => (
