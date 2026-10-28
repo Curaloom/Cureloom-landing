@@ -178,7 +178,7 @@ function NpiCard({ onFound }: { onFound: (p: Practice) => void }) {
           Continue without the lookup
         </button>
       )}
-      <p className="est-card__note">Free. No account. We keep a note of the NPI you look up.</p>
+      <p className="est-card__note">Free. No account.</p>
     </form>
   );
 }
