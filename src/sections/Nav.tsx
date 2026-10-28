@@ -34,8 +34,9 @@ export function Nav() {
           ))}
         </nav>
         <div className="nav__right">
-          <a className="btn btn--primary btn--sm" href={SITE.bookingHref}>
-            Request a walkthrough
+          <a className="btn btn--primary btn--sm nav__cta" href={SITE.bookingHref} aria-label="Request a walkthrough">
+            <span className="nav__cta-long">Request a walkthrough</span>
+            <span className="nav__cta-short">Walkthrough</span>
           </a>
           <button
             type="button"
