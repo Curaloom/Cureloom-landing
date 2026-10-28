@@ -26,6 +26,14 @@ All copy and configuration lives in `src/site.ts`. Two values there are placehol
 
 Fonts (Newsreader, Inter) load from Google Fonts via `index.html`.
 
+### APCM revenue estimator (`/estimate.html`)
+
+A lead-capture page: the visitor enters an NPI, sees three APCM revenue scenarios, and leaves their details for the full report. Its settings live in `ESTIMATE` in `src/site.ts`.
+
+- **NPI lookup.** The CMS NPPES registry sends no CORS headers, so the page calls `/api/npi`. Vite proxies that in `dev` and `preview` (`vite.config.ts`). On Vercel, `vercel.json` does the same rewrite (`/api/npi` to `https://npiregistry.cms.hhs.gov/api/`). Another host needs an equivalent proxy rule.
+- **Leads.** Set `leadEndpoint` to a URL that accepts a JSON POST (a form service, CRM webhook or your own API). While it is empty, the form opens a prefilled email to `contactEmail`.
+- **Rates and assumptions.** The tier rates, panel mix and enrolment scenarios are approximate. Check them against the current Physician Fee Schedule before going live.
+
 ## Design principles
 
 The page follows the approach of the best health-tech marketing sites (cadence.care is the reference): warm and light rather than dark and glowing, one brand colour, an editorial serif at large sizes, copy that leads with the patient and the outcome, product shown honestly in calm frames, and motion kept to gentle reveals.
