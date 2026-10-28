@@ -31,8 +31,9 @@ export function EstimatePage() {
             <a className="est-navlink" href="/#how">
               How Curalooms works
             </a>
-            <a className="btn btn--primary btn--sm" href={bookingHref}>
-              Request a walkthrough
+            <a className="btn btn--primary btn--sm nav__cta" href={bookingHref} aria-label="Request a walkthrough">
+              <span className="nav__cta-long">Request a walkthrough</span>
+              <span className="nav__cta-short">Walkthrough</span>
             </a>
           </div>
         </div>

@@ -19,9 +19,8 @@ Node 20 or newer.
 
 ## Before going live
 
-All copy and configuration lives in `src/site.ts`. Two values there are placeholders:
+All copy and configuration lives in `src/site.ts`. `contactEmail` (rithik@curalooms.com) is the primary contact. One value is still a placeholder:
 
-- `contactEmail` is set to `hello@curalooms.com`. Replace it with the real inbox.
 - `bookingHref` points at the contact section (`#contact`). Swap it for a scheduling link when you have one.
 
 Fonts (Newsreader, Inter) load from Google Fonts via `index.html`.

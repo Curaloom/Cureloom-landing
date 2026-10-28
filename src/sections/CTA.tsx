@@ -60,7 +60,7 @@ export function CTA() {
                   <input name="practice" autoComplete="organization" required />
                 </label>
                 <button className="btn btn--inverse cta__submit" type="submit" disabled={status === 'sending'}>
-                  {status === 'sending' ? 'Sending…' : COPY.submit} <ArrowRight size={16} className="arrow" />
+                  {status === 'sending' ? 'Sending…' : COPY.primary} <ArrowRight size={16} className="arrow" />
                 </button>
                 {status === 'error' && (
                   <p className="cta__error" role="alert">
