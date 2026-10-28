@@ -18,6 +18,7 @@ export const NAV_ITEMS = [
   { label: 'Platform', href: '#platform' },
   { label: 'For practices', href: '#teams' },
   { label: 'Principles', href: '#principles' },
+  { label: 'Revenue estimate', href: '/estimate.html' },
 ];
 
 export const HERO = {
@@ -172,3 +173,34 @@ export const CTA = {
   primary: 'Request a walkthrough',
   secondary: 'Read how a month runs',
 };
+
+/**
+ * The APCM revenue estimator at /estimate.html, a lead-capture page.
+ * Rates are approximate national non-facility Medicare amounts. Check them against the current
+ * Physician Fee Schedule before publishing, and update the label if you switch to locality rates.
+ */
+export const ESTIMATE = {
+  /** NLM Clinical Tables, a CORS-enabled mirror of the CMS NPPES registry, so no proxy is needed. */
+  npiApi: 'https://clinicaltables.nlm.nih.gov/api',
+  /**
+   * POST endpoint for lead submissions (JSON body), e.g. a Formspree form: https://formspree.io/f/<form id>.
+   * Empty means the form opens a prefilled email instead.
+   */
+  leadEndpoint: 'https://formspree.io/f/xgaakgdn',
+  rateLabel: 'Approximate CMS national Medicare rates',
+  /** Share of a practice's Medicare panel in each APCM tier, and the monthly rate for that tier. */
+  tiers: [
+    { code: 'G0556', label: 'One chronic condition', share: 0.2, rate: 15 },
+    { code: 'G0557', label: 'Two or more chronic conditions', share: 0.55, rate: 50 },
+    { code: 'G0558', label: 'Two or more conditions, QMB', share: 0.1, rate: 110 },
+  ],
+  /** Share of eligible patients who enrol, per scenario. */
+  scenarios: [
+    { key: 'conservative', label: 'Conservative', enrolment: 0.2 },
+    { key: 'expected', label: 'Expected', enrolment: 0.4 },
+    { key: 'strong', label: 'Strong', enrolment: 0.6 },
+  ],
+  /** Starting panel size before the visitor adjusts it. */
+  defaultPanel: { individual: 800, organization: 2500 },
+  roles: ['Physician', 'Practice manager', 'Nurse or care manager', 'Billing or revenue cycle', 'Other'],
+} as const;

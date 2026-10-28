@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
+      input: { main: 'index.html', estimate: 'estimate.html' },
       output: {
         manualChunks: {
           react: ['react', 'react-dom', 'react-dom/client'],
