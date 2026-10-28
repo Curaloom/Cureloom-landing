@@ -10,7 +10,7 @@ export function Platform() {
         <SectionHeading
           eyebrow="The platform"
           title="Everything the month needs. Nothing it does not."
-          lede="One record for calls, flags, time, notes and claims. No dashboards for their own sake, no nudges, no surprises on the billing list."
+          lede="One record for calls, flags, time, notes and claims."
         />
         <AnimatedContent className="features" stagger={0.07} distance={20} duration={0.8} ease="power2.out" threshold={0.15}>
           {FEATURES.map((f) => {

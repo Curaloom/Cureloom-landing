@@ -35,7 +35,7 @@ export function EstimatePage() {
           </a>
           <div className="nav__right">
             <a className="est-navlink" href="/#how">
-              How Cureloom works
+              How Curalooms works
             </a>
             <a className="btn btn--primary btn--sm" href={bookingHref}>
               Request a walkthrough
@@ -366,7 +366,7 @@ function LeadForm({ practice, panel, annual }: { practice: Practice; panel: numb
       <div className="est-lead__intro">
         <h3 className="display-3">Get the full report.</h3>
         <p>
-          A tier-by-tier breakdown for your practice, the enrolment and staffing it assumes, and how Cureloom runs the
+          A tier-by-tier breakdown for your practice, the enrolment and staffing it assumes, and how Curalooms runs the
           month so the revenue holds up.
         </p>
       </div>

@@ -1,6 +1,6 @@
-# Cureloom landing page
+# Curalooms landing page
 
-Marketing site for **Cureloom**, the prevention-first chronic care management platform. One page, built with Vite, React 19 and TypeScript. A small set of [React Bits](https://reactbits.dev) components provides the motion.
+Marketing site for **Curalooms**, the prevention-first chronic care management platform. One page, built with Vite, React 19 and TypeScript. A small set of [React Bits](https://reactbits.dev) components provides the motion.
 
 ## Run it
 
@@ -21,7 +21,7 @@ Node 20 or newer.
 
 All copy and configuration lives in `src/site.ts`. Two values there are placeholders:
 
-- `contactEmail` is set to `hello@cureloom.com`. Replace it with the real inbox.
+- `contactEmail` is set to `hello@curalooms.com`. Replace it with the real inbox.
 - `bookingHref` points at the contact section (`#contact`). Swap it for a scheduling link when you have one.
 
 Fonts (Newsreader, Inter) load from Google Fonts via `index.html`.
@@ -42,7 +42,7 @@ The page follows the approach of the best health-tech marketing sites (cadence.c
 - **Type.** Newsreader for display and numerals, Inter for everything else. Sentence case throughout. Headlines are short declarative statements.
 - **Layout.** Left-aligned, generous section spacing, hairline rules instead of boxes wherever possible, rounded product frames.
 - **Motion.** Fade-and-rise reveals on scroll, a word-by-word rise on the headline, numbers that count once. Nothing loops.
-- **Honesty.** Population statistics cite the CDC. There are no testimonials, logos or usage metrics; add them only once they are real. Patient names and readings in product frames are fictional, from the simulated practice in the Cureloom prototype.
+- **Honesty.** Population statistics cite the CDC. There are no testimonials, logos or usage metrics; add them only once they are real. Patient names and readings in product frames are fictional, from the simulated practice in the Curalooms prototype. Product claims follow the prototype: the EHR export column mapper and opportunity matrix, the four nurse queues, physician care plan approval and escalations, the 30-minute urgent window, the CMS-1500 export with pre-flight checks, and billing codes 99490, 99439, 99487, 99489, G0556, G0557 and G0558.
 
 ## How it is put together
 

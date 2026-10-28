@@ -7,32 +7,32 @@ function EnrollPanel() {
   return (
     <div className="ui">
       <div className="ui__row">
-        <strong>october-roster.csv</strong>
-        <span className="ui__muted">15 rows · 13 accepted</span>
+        <strong>october-roster.xlsx</strong>
+        <span className="ui__muted">15 rows · columns mapped</span>
       </div>
       <div className="ui__row">
         <span>
-          <strong>Harold Jenkins</strong> <span className="ui__muted">· I50.9, N18.3 · visit 12 Sep</span>
+          <strong>Maria Delgado</strong> <span className="ui__muted">· E11.9, I10 · Medicare and Medicaid (QMB)</span>
         </span>
-        <span className="tag tag--ok">Eligible</span>
+        <span className="tag tag--info">APCM L3 · G0558</span>
       </div>
       <div className="ui__row">
         <span>
-          <strong>Maria Delgado</strong> <span className="ui__muted">· E11.9, I10 · QMB</span>
+          <strong>Carl Mendez</strong> <span className="ui__muted">· I10, E78.5 · Medicare Advantage</span>
         </span>
-        <span className="tag tag--info">APCM · G0558</span>
+        <span className="tag tag--ok">CCM · 99490</span>
       </div>
       <div className="ui__row">
         <span>
-          <strong>Row 12</strong> <span className="ui__muted">· last visit 14 months ago</span>
+          <strong>Frank Olsen</strong> <span className="ui__muted">· one chronic condition</span>
+        </span>
+        <span className="tag tag--info">APCM L1 · G0556</span>
+      </div>
+      <div className="ui__row">
+        <span>
+          <strong>Betty Haynes</strong> <span className="ui__muted">· last visit 14 months ago</span>
         </span>
         <span className="tag tag--concern">Needs a visit</span>
-      </div>
-      <div className="ui__row">
-        <span>
-          <strong>Row 14</strong> <span className="ui__muted">· one qualifying code</span>
-        </span>
-        <span className="tag tag--urgent">Not eligible</span>
       </div>
     </div>
   );
@@ -102,9 +102,15 @@ function BillingPanel() {
       </div>
       <div className="ui__row">
         <span>
-          <strong>G0557</strong> <span className="ui__muted">· APCM · Harold Jenkins</span>
+          <strong>G0557</strong> <span className="ui__muted">· APCM Level 2 · Harold Jenkins</span>
         </span>
         <span className="tag tag--concern">Held · awaiting attestation</span>
+      </div>
+      <div className="ui__row">
+        <span>
+          <strong>CMS-1500</strong> <span className="ui__muted">· 5 claims clean · 1 excluded</span>
+        </span>
+        <span className="tag tag--info">Pre-flight</span>
       </div>
     </div>
   );
@@ -119,7 +125,7 @@ export function HowItWorks() {
         <SectionHeading
           eyebrow="How a month runs"
           title="Four moves, every patient, every month."
-          lede="Cureloom carries the schedule, the scripts, the rules and the paperwork, and hands your team the decisions."
+          lede="Curalooms handles the schedule, the calls, the rules and the paperwork. Your team makes the decisions."
         />
         <div className="steps">
           {STEPS.map((step, i) => {

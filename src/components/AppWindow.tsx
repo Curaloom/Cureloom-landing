@@ -2,7 +2,7 @@ import { LogoMark } from './Logo';
 
 /**
  * A calm, designed rendering of the nurse's Today queue. Names and readings are fictional,
- * taken from the simulated practice used in the Cureloom prototype.
+ * taken from the simulated practice used in the Curalooms prototype.
  */
 const ROWS = [
   {
@@ -81,7 +81,7 @@ export function AppWindow() {
       <div className="app__bar">
         <div className="app__brand">
           <LogoMark size={18} />
-          Cureloom
+          Curalooms
           <small>Westfield Family Medicine</small>
         </div>
         <div className="app__right">
@@ -101,7 +101,7 @@ export function AppWindow() {
           </nav>
           <div className="app__group">Practice</div>
           <nav className="app__nav">
-            <a>Billing list</a>
+            <a>Billing</a>
             <a>Attestation</a>
             <a>
               Outbox <span className="app__count">5</span>
@@ -112,8 +112,7 @@ export function AppWindow() {
         <div className="app__main">
           <div className="app__title">Today · Tue 13 Oct</div>
           <p className="app__intro">
-            10 patients need you, in order: urgent, concern, not reached after 3 tries, CCM calls due, open tasks, quick
-            reviews.
+            Clinical urgency first. Consent pending, care not yet delivered and pending steps sit in their own queues.
           </p>
           <div className="q">
             <div className="q__row">

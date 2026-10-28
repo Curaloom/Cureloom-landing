@@ -3,7 +3,7 @@ import { ArrowRight } from '../components/icons';
 import { CTA as COPY, SITE } from '../site';
 
 export function CTA() {
-  const mailto = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('Cureloom walkthrough')}`;
+  const mailto = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent('Curalooms walkthrough')}`;
   return (
     <section className="cta" id="contact">
       <div className="container">
