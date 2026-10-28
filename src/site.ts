@@ -10,6 +10,8 @@ export const SITE = {
   bookingHref: '#contact',
   /** Placeholder: replace with the real inbox. */
   contactEmail: 'hello@curalooms.com',
+  /** Formspree form that receives walkthrough requests, estimator leads and NPI lookups. */
+  formEndpoint: 'https://formspree.io/f/xgaakgdn',
   year: new Date().getFullYear(),
 } as const;
 
@@ -27,6 +29,7 @@ export const HERO = {
   sub: 'An AI workflow that runs your CCM and APCM programs from enrollment to claim and lifts the load off your team. Your nurses and physicians make every clinical call.',
   primary: 'Request a walkthrough',
   secondary: 'See how a month runs',
+  estimate: 'Estimate your APCM revenue from your NPI',
 };
 
 export const FACTS = [
@@ -172,6 +175,8 @@ export const CTA = {
   body: 'Bring a roster export and thirty minutes. We\'ll run a simulated month from upload to claims file, AI calls included.',
   primary: 'Request a walkthrough',
   secondary: 'Read how a month runs',
+  submit: 'Request an APCM walkthrough',
+  sent: 'Thanks, Rithik will email you to arrange a walkthrough.',
 };
 
 /**
@@ -186,7 +191,7 @@ export const ESTIMATE = {
    * POST endpoint for lead submissions (JSON body), e.g. a Formspree form: https://formspree.io/f/<form id>.
    * Empty means the form opens a prefilled email instead.
    */
-  leadEndpoint: 'https://formspree.io/f/xgaakgdn',
+  leadEndpoint: SITE.formEndpoint,
   rateLabel: 'CMS 2026 national Medicare rates',
   /** Share of a practice's Medicare panel in each APCM tier, and the monthly rate for that tier. */
   tiers: [
