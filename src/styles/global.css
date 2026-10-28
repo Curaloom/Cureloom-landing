@@ -1339,11 +1339,6 @@ section[id] {
   color: rgba(247, 244, 238, 0.85);
 }
 
-.cta__form em {
-  font-style: normal;
-  color: rgba(247, 244, 238, 0.55);
-}
-
 .cta__form input {
   width: 100%;
   padding: 11px 13px;
@@ -1360,6 +1355,7 @@ section[id] {
   box-shadow: 0 0 0 3px rgba(247, 244, 238, 0.35);
 }
 
+.cta__wide,
 .cta__submit {
   grid-column: 1 / -1;
   justify-content: center;

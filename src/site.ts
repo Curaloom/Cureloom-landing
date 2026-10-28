@@ -175,7 +175,8 @@ export const CTA = {
   body: 'Bring a roster export and thirty minutes. We\'ll run a simulated month from upload to claims file, AI calls included.',
   primary: 'Request a walkthrough',
   secondary: 'Read how a month runs',
-  sent: "Thanks. We'll reply within one business day to set a time.",
+  submit: 'Request an APCM walkthrough',
+  sent: 'Thanks, Rithik will email you to arrange a walkthrough.',
 };
 
 /**

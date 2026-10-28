@@ -55,18 +55,12 @@ export function CTA() {
                   <span>Work email</span>
                   <input name="email" type="email" autoComplete="email" required />
                 </label>
-                <label>
-                  <span>Practice</span>
+                <label className="cta__wide">
+                  <span>Clinic or company</span>
                   <input name="practice" autoComplete="organization" required />
                 </label>
-                <label>
-                  <span>
-                    Phone <em>optional</em>
-                  </span>
-                  <input name="phone" type="tel" autoComplete="tel" />
-                </label>
                 <button className="btn btn--inverse cta__submit" type="submit" disabled={status === 'sending'}>
-                  {status === 'sending' ? 'Sending…' : COPY.primary} <ArrowRight size={16} className="arrow" />
+                  {status === 'sending' ? 'Sending…' : COPY.submit} <ArrowRight size={16} className="arrow" />
                 </button>
                 {status === 'error' && (
                   <p className="cta__error" role="alert">
