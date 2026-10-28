@@ -30,7 +30,7 @@ Fonts (Newsreader, Inter) load from Google Fonts via `index.html`.
 
 A lead-capture page: the visitor enters an NPI, sees three APCM revenue scenarios, and leaves their details for the full report. Its settings live in `ESTIMATE` in `src/site.ts`.
 
-- **NPI lookup.** The CMS NPPES registry sends no CORS headers, so the page calls `/api/npi`. Vite proxies that in `dev` and `preview` (`vite.config.ts`). On Vercel, `vercel.json` does the same rewrite (`/api/npi` to `https://npiregistry.cms.hhs.gov/api/`). Another host needs an equivalent proxy rule.
+- **NPI lookup.** The page queries the [NLM Clinical Tables NPI API](https://clinicaltables.nlm.nih.gov/apidoc/npi_idv/v3/doc.html), a mirror of the CMS NPPES registry that allows browser calls, so no proxy or server is needed.
 - **Leads.** Set `leadEndpoint` to a URL that accepts a JSON POST (a form service, CRM webhook or your own API). While it is empty, the form opens a prefilled email to `contactEmail`.
 - **Rates and assumptions.** The tier rates, panel mix and enrolment scenarios are approximate. Check them against the current Physician Fee Schedule before going live.
 

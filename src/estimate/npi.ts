@@ -25,36 +25,33 @@ export function isValidNpi(value: string): boolean {
 
 const titleCase = (s: string) => s.toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase());
 
-type NppesResult = {
-  enumeration_type: 'NPI-1' | 'NPI-2';
-  basic: { organization_name?: string; first_name?: string; last_name?: string; credential?: string };
-  addresses?: { address_purpose: string; city: string; state: string }[];
-  taxonomies?: { desc: string; primary: boolean }[];
-};
+// NLM Clinical Tables mirrors the CMS NPPES registry and, unlike NPPES, allows browser calls (CORS).
+const FIELDS = 'NPI,name.full,provider_type,addr_practice.city,addr_practice.state';
+type Row = [npi: string, name: string, providerType: string, city: string, state: string];
 
-/** Looks the NPI up in the CMS NPPES registry. Resolves null when the registry has no match. */
+async function search(table: 'npi_idv' | 'npi_org', npi: string, signal?: AbortSignal): Promise<Row | undefined> {
+  const res = await fetch(`${ESTIMATE.npiApi}/${table}/v3/search?terms=${npi}&sf=NPI&df=${FIELDS}&maxList=5`, { signal });
+  if (!res.ok) throw new Error(`NPI search returned ${res.status}`);
+  const [, , , rows]: [number, string[], unknown, Row[]] = await res.json();
+  // The search matches prefixes, so keep only the exact NPI.
+  return rows.find((r) => r[0] === npi);
+}
+
+/** Looks the NPI up among individual and organisation providers. Resolves null when neither has it. */
 export async function lookupNpi(npi: string, signal?: AbortSignal): Promise<Practice | null> {
-  const res = await fetch(`${ESTIMATE.npiApi}?version=2.1&number=${npi}`, { signal });
-  if (!res.ok) throw new Error(`NPPES returned ${res.status}`);
-  const data: { results?: NppesResult[] } = await res.json();
-  const r = data.results?.[0];
-  if (!r) return null;
+  const [person, org] = await Promise.all([search('npi_idv', npi, signal), search('npi_org', npi, signal)]);
+  const row = person ?? org;
+  if (!row) return null;
 
-  const kind = r.enumeration_type === 'NPI-2' ? 'organization' : 'individual';
-  const b = r.basic;
-  const person = [b.first_name, b.last_name].filter(Boolean).join(' ');
-  const name =
-    kind === 'organization'
-      ? titleCase(b.organization_name ?? 'Your practice')
-      : `${titleCase(person)}${b.credential ? `, ${b.credential}` : ''}`;
-  const addr = r.addresses?.find((a) => a.address_purpose === 'LOCATION') ?? r.addresses?.[0];
-  const tax = r.taxonomies?.find((t) => t.primary) ?? r.taxonomies?.[0];
+  const [, rawName, providerType, city, state] = row;
+  // Individuals come back as "LAST, FIRST"; organisations as their registered name.
+  const name = person ? titleCase(rawName.split(', ').reverse().join(' ')) : titleCase(rawName);
 
   return {
     npi,
     name,
-    kind,
-    specialty: tax?.desc,
-    location: addr ? `${titleCase(addr.city)}, ${addr.state}` : undefined,
+    kind: person ? 'individual' : 'organization',
+    specialty: providerType || undefined,
+    location: city ? `${titleCase(city)}, ${state}` : undefined,
   };
 }

@@ -180,8 +180,8 @@ export const CTA = {
  * Physician Fee Schedule before publishing, and update the label if you switch to locality rates.
  */
 export const ESTIMATE = {
-  /** Proxied to the CMS NPPES registry (it sends no CORS headers). See vite.config.ts and README. */
-  npiApi: '/api/npi',
+  /** NLM Clinical Tables, a CORS-enabled mirror of the CMS NPPES registry, so no proxy is needed. */
+  npiApi: 'https://clinicaltables.nlm.nih.gov/api',
   /**
    * POST endpoint for lead submissions (JSON body), e.g. a Formspree form: https://formspree.io/f/<form id>.
    * Empty means the form opens a prefilled email instead.
