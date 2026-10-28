@@ -54,6 +54,10 @@ export function Hero() {
                 {HERO.secondary} <ArrowRight size={15} className="arrow" />
               </a>
             </div>
+            <a className="hero__estimate" href="/estimate.html">
+              <span className="hero__estimate-tag">Free tool</span>
+              {HERO.estimate} <ArrowRight size={14} className="arrow" />
+            </a>
           </AnimatedContent>
         </div>
 
