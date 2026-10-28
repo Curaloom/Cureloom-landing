@@ -55,3 +55,30 @@ export async function lookupNpi(npi: string, signal?: AbortSignal): Promise<Prac
     location: city ? `${titleCase(city)}, ${state}` : undefined,
   };
 }
+
+const logged = new Set<string>();
+
+/**
+ * Records a valid NPI the visitor looked up, found or not, in the lead inbox (once per NPI per visit).
+ * Fire-and-forget: a failure here never blocks the estimate.
+ */
+export function logNpiLookup(npi: string, practice: Practice | null, outcome: 'found' | 'not found' | 'lookup failed') {
+  if (!ESTIMATE.leadEndpoint || logged.has(npi)) return;
+  logged.add(npi);
+  void fetch(ESTIMATE.leadEndpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    keepalive: true,
+    body: JSON.stringify({
+      _subject: `NPI lookup: ${practice?.name ?? npi} (NPI ${npi})`,
+      type: 'npi-lookup',
+      npi,
+      outcome,
+      practice: practice?.name ?? '',
+      kind: practice?.kind ?? '',
+      specialty: practice?.specialty ?? '',
+      location: practice?.location ?? '',
+      source: 'apcm-estimator',
+    }),
+  }).catch(() => {});
+}
