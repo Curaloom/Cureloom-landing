@@ -8,8 +8,8 @@ export const SITE = {
   tagline: 'Chronic care management that checks in before the crisis does.',
   /** Where "Request a walkthrough" buttons go. Swap for a scheduling link when you have one. */
   bookingHref: '#contact',
-  /** Placeholder: replace with the real inbox. */
-  contactEmail: 'hello@curalooms.com',
+  /** Primary contact, shown on the site and used as the email fallback for every form. */
+  contactEmail: 'rithik@curalooms.com',
   /** Formspree form that receives walkthrough requests, estimator leads and NPI lookups. */
   formEndpoint: 'https://formspree.io/f/xgaakgdn',
   year: new Date().getFullYear(),
@@ -175,7 +175,6 @@ export const CTA = {
   body: 'Bring a roster export and thirty minutes. We\'ll run a simulated month from upload to claims file, AI calls included.',
   primary: 'Request a walkthrough',
   secondary: 'Read how a month runs',
-  submit: 'Request an APCM walkthrough',
   sent: 'Thanks, Rithik will email you to arrange a walkthrough.',
 };
 
