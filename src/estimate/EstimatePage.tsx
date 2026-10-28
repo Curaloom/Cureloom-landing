@@ -4,7 +4,7 @@ import { Wordmark } from '../components/Logo';
 import { ArrowRight, Check } from '../components/icons';
 import { ESTIMATE, SITE } from '../site';
 import { estimate, eligibleShare, usd, usdRate } from './calc';
-import { isValidNpi, lookupNpi, type Practice } from './npi';
+import { isValidNpi, logNpiLookup, lookupNpi, type Practice } from './npi';
 
 const bookingHref = SITE.bookingHref.startsWith('#') ? `/${SITE.bookingHref}` : SITE.bookingHref;
 
@@ -121,6 +121,7 @@ function NpiCard({ onFound }: { onFound: (p: Practice) => void }) {
     setStatus('loading');
     try {
       const p = await lookupNpi(npi);
+      logNpiLookup(npi, p, p ? 'found' : 'not found');
       if (!p) {
         setStatus('error');
         setError('We could not find that NPI in the CMS registry.');
@@ -130,6 +131,7 @@ function NpiCard({ onFound }: { onFound: (p: Practice) => void }) {
       setStatus('idle');
       onFound(p);
     } catch {
+      logNpiLookup(npi, null, 'lookup failed');
       setStatus('error');
       setError('The CMS registry did not respond. Try again, or continue without the lookup.');
       setCanSkip(true);
@@ -176,7 +178,7 @@ function NpiCard({ onFound }: { onFound: (p: Practice) => void }) {
           Continue without the lookup
         </button>
       )}
-      <p className="est-card__note">Free. No account. Nothing is saved unless you ask for the report.</p>
+      <p className="est-card__note">Free. No account. We keep a note of the NPI you look up.</p>
     </form>
   );
 }
