@@ -33,43 +33,22 @@
 
 /* Hero ---------------------------------------------------------------------- */
 .est-hero {
-  padding-block: clamp(56px, 8vw, 104px) clamp(48px, 6vw, 80px);
+  padding-block: clamp(56px, 8vw, 112px) clamp(48px, 6vw, 88px);
 }
 
-.est-hero__inner {
-  max-width: 760px;
-  text-align: center;
-}
-
-.est-pill {
-  display: inline-flex;
+.est-hero__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
   align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border: 1px solid var(--sage);
-  border-radius: 999px;
-  background: var(--green-tint);
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--green);
-}
-
-.est-pill::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
+  gap: clamp(32px, 6vw, 88px);
 }
 
 .est-hero__title {
-  margin: 22px 0 0;
+  margin: 18px 0 0;
 }
 
 .est-hero__sub {
-  margin: 20px auto 40px;
+  margin: 22px 0 0;
 }
 
 /* Cards and inputs ------------------------------------------------------------ */
@@ -167,27 +146,11 @@
   cursor: pointer;
 }
 
-.est-ticks {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 22px;
-  margin: 22px 0 0;
-  padding: 18px 0 0;
-  border-top: 1px solid var(--line);
-  list-style: none;
+.est-card__note {
+  margin: 18px 0 0;
   font-size: 13px;
-  color: var(--ink-2);
-}
-
-.est-ticks li {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.est-ticks svg {
-  color: var(--green);
+  color: var(--muted);
+  text-align: center;
 }
 
 /* Practice found */
@@ -239,22 +202,77 @@
   scroll-margin-top: var(--nav-h);
 }
 
-.est-results__head {
-  max-width: 760px;
+.est-results__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(28px, 5vw, 72px);
+  margin-top: 22px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
 }
 
-.est-results__head .display-3 {
-  margin: 14px 0 0;
+.est-seg {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--cream-2);
 }
 
-.est-results__note {
-  margin: 12px 0 0;
+.est-seg button {
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.est-seg button.is-active {
+  background: var(--green);
+  color: var(--cream);
+}
+
+.est-figure__annual {
+  margin: 28px 0 0;
+  font-family: var(--display);
+  font-size: clamp(56px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+  color: var(--green);
+}
+
+.est-figure__label {
+  margin: 10px 0 0;
+  font-size: 17px;
   color: var(--ink-2);
 }
 
-.est-panel {
-  margin-top: 36px;
-  padding: 22px 24px;
+.est-figure__stats {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  gap: 28px;
+  margin: 32px 0 0;
+}
+
+.est-figure__stats dt {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.est-figure__stats dd {
+  margin: 4px 0 0;
+  font-family: var(--display);
+  font-size: 24px;
+  font-variant-numeric: tabular-nums;
+}
+
+.est-breakdown {
+  padding: clamp(20px, 3vw, 28px);
   border-radius: var(--r-md);
   background: var(--cream);
 }
@@ -265,7 +283,7 @@
   gap: 20px;
 }
 
-.est-panel input[type='range'] {
+.est-breakdown input[type='range'] {
   flex: 1;
   height: 6px;
   border-radius: 999px;
@@ -274,7 +292,7 @@
   cursor: pointer;
 }
 
-.est-panel input[type='range']::-webkit-slider-thumb {
+.est-breakdown input[type='range']::-webkit-slider-thumb {
   width: 22px;
   height: 22px;
   border: 3px solid var(--white);
@@ -284,7 +302,7 @@
   appearance: none;
 }
 
-.est-panel input[type='range']::-moz-range-thumb {
+.est-breakdown input[type='range']::-moz-range-thumb {
   width: 18px;
   height: 18px;
   border: 3px solid var(--white);
@@ -293,95 +311,56 @@
   box-shadow: 0 1px 4px rgba(21, 35, 29, 0.3);
 }
 
-.est-scenarios {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.est-scenario {
-  padding: 24px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  background: var(--white);
-}
-
-.est-scenario--featured {
-  border-color: var(--green);
-  box-shadow: 0 0 0 1px var(--green);
-  background: var(--green-tint);
-}
-
-.est-scenario header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.est-scenario h3 {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.est-scenario header span {
-  font-size: 12.5px;
-  color: var(--muted);
-}
-
-.est-scenario__annual {
-  margin: 16px 0 0;
-  font-family: var(--display);
-  font-size: clamp(34px, 3.4vw, 44px);
-  line-height: 1;
-  letter-spacing: -0.015em;
-  font-variant-numeric: tabular-nums;
-  color: var(--ink);
-}
-
-.est-scenario--featured .est-scenario__annual {
-  color: var(--green);
-}
-
-.est-scenario__sub {
-  margin: 6px 0 0;
-  font-size: 13.5px;
-  color: var(--muted);
-}
-
-.est-scenario table {
+.est-table {
   width: 100%;
-  margin-top: 18px;
+  margin-top: 22px;
   border-collapse: collapse;
-  font-size: 13.5px;
+  font-size: 14px;
 }
 
-.est-scenario th,
-.est-scenario td {
-  padding: 9px 0;
+.est-table th,
+.est-table td {
+  padding: 11px 0;
   border-top: 1px solid var(--line);
   vertical-align: top;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 
-.est-scenario th {
-  font-weight: 600;
+.est-table thead th {
+  border-top: 0;
+  padding-top: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.est-table th:first-child {
   text-align: left;
 }
 
-.est-scenario th small {
+.est-table tbody th {
+  font-weight: 600;
+}
+
+.est-table small {
   display: block;
-  font-weight: 400;
   font-size: 12px;
+  font-weight: 400;
   color: var(--muted);
 }
 
-.est-scenario td {
-  text-align: right;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
+.est-table td {
   color: var(--ink-2);
+  white-space: nowrap;
+  padding-left: 16px;
+}
+
+.est-table tfoot th,
+.est-table tfoot td {
+  border-top: 1px solid var(--line-strong);
+  font-weight: 600;
+  color: var(--ink);
 }
 
 .est-fineprint {
@@ -461,37 +440,60 @@
   align-items: center;
 }
 
-/* How it works -------------------------------------------------------------- */
-.est-how {
-  padding-block: clamp(56px, 7vw, 96px);
+/* APCM codes ---------------------------------------------------------------- */
+.est-codes {
+  padding-block: clamp(56px, 7vw, 104px);
 }
 
-.est-how__grid {
+.est-codes__head .display-3 {
+  margin: 14px 0 0;
+}
+
+.est-codes__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(24px, 4vw, 48px);
-  margin: 24px 0 0;
-  padding: 0;
-  list-style: none;
+  margin-top: 36px;
 }
 
-.est-how__n {
+.est-code {
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.est-code__code {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--green);
+}
+
+.est-code__rate {
+  margin: 10px 0 0;
   font-family: var(--display);
-  font-size: 44px;
+  font-size: 40px;
   line-height: 1;
-  color: var(--sage);
+  letter-spacing: -0.015em;
 }
 
-.est-how h3 {
-  margin: 14px 0 0;
-  font-size: 17px;
+.est-code__rate span {
+  font-family: var(--body);
+  font-size: 13px;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.est-code h3 {
+  margin: 18px 0 0;
+  font-size: 16px;
   font-weight: 600;
 }
 
-.est-how p {
-  margin: 8px 0 0;
+.est-code p:last-child {
+  margin: 6px 0 0;
+  font-size: 15px;
   color: var(--ink-2);
-  font-size: 15.5px;
 }
 
 .est-footer {
@@ -511,8 +513,9 @@
 
 /* Responsive ---------------------------------------------------------------- */
 @media (max-width: 900px) {
-  .est-scenarios,
-  .est-how__grid,
+  .est-hero__grid,
+  .est-results__grid,
+  .est-codes__grid,
   .est-lead {
     grid-template-columns: 1fr;
   }
@@ -535,12 +538,16 @@
   .est-input--num {
     width: 96px;
   }
+
+  .est-figure__stats {
+    grid-template-columns: repeat(2, auto);
+  }
 }
 
 @media print {
   .nav,
   .est-hero,
-  .est-how,
+  .est-codes,
   .est-lead,
   .est-footer {
     display: none;

@@ -32,7 +32,7 @@ A lead-capture page: the visitor enters an NPI, sees three APCM revenue scenario
 
 - **NPI lookup.** The page queries the [NLM Clinical Tables NPI API](https://clinicaltables.nlm.nih.gov/apidoc/npi_idv/v3/doc.html), a mirror of the CMS NPPES registry that allows browser calls, so no proxy or server is needed.
 - **Leads.** Set `leadEndpoint` to a URL that accepts a JSON POST (a form service, CRM webhook or your own API). While it is empty, the form opens a prefilled email to `contactEmail`.
-- **Rates and assumptions.** The tier rates, panel mix and enrolment scenarios are approximate. Check them against the current Physician Fee Schedule before going live.
+- **Rates and assumptions.** Tier rates are the CMS 2026 national non-facility amounts (G0556 $16.37, G0557 $53.78, G0558 $117.24). Update them each January. The panel mix and enrolment scenarios are assumptions, not CMS figures.
 
 ## Design principles
 

@@ -26,3 +26,7 @@ export const eligibleShare = ESTIMATE.tiers.reduce((n, t) => n + t.share, 0);
 
 export const usd = (n: number) =>
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+
+/** Per-patient rates keep their cents. */
+export const usdRate = (n: number) =>
+  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(n);

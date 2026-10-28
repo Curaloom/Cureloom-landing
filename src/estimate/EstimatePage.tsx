@@ -3,14 +3,8 @@ import AnimatedContent from '../components/reactbits/Animations/AnimatedContent/
 import { Wordmark } from '../components/Logo';
 import { ArrowRight, Check } from '../components/icons';
 import { ESTIMATE, SITE } from '../site';
-import { estimate, eligibleShare, usd } from './calc';
+import { estimate, eligibleShare, usd, usdRate } from './calc';
 import { isValidNpi, lookupNpi, type Practice } from './npi';
-
-const STEPS = [
-  { n: '01', title: 'Enter your NPI', body: 'We look your practice up in the CMS NPPES registry. No account needed.' },
-  { n: '02', title: 'See your estimate', body: 'Adjust your Medicare panel and see three APCM revenue scenarios, tier by tier.' },
-  { n: '03', title: 'Get your report', body: 'Leave your email and we send the full estimate, then walk you through it if you want.' },
-];
 
 const bookingHref = SITE.bookingHref.startsWith('#') ? `/${SITE.bookingHref}` : SITE.bookingHref;
 
@@ -46,19 +40,19 @@ export function EstimatePage() {
 
       <main className="est">
         <section className="est-hero">
-          <div className="container est-hero__inner">
-            <AnimatedContent distance={16} duration={0.7} ease="power2.out" trigger="mount">
-              <span className="est-pill">Advanced Primary Care Management</span>
+          <div className="container est-hero__grid">
+            <AnimatedContent className="est-hero__text" distance={16} duration={0.7} ease="power2.out" trigger="mount">
+              <span className="eyebrow">APCM revenue estimate</span>
               <h1 className="display-2 est-hero__title">
-                What could APCM add to <em>your practice?</em>
+                Your Medicare panel, <em>priced out</em> under APCM.
               </h1>
               <p className="lede est-hero__sub">
-                Enter your NPI. In under a minute you will see what your Medicare panel could generate under APCM codes
-                G0556, G0557 and G0558.
+                Advanced Primary Care Management pays a monthly fee for every enrolled patient. Start from your NPI, set
+                your panel size, and see what that adds up to across a year.
               </p>
             </AnimatedContent>
 
-            <AnimatedContent distance={24} duration={0.9} ease="power2.out" delay={0.2} trigger="mount">
+            <AnimatedContent className="est-hero__form" distance={24} duration={0.9} ease="power2.out" delay={0.2} trigger="mount">
               {practice ? (
                 <PracticeCard practice={practice} onChange={() => setPractice(null)} />
               ) : (
@@ -76,18 +70,24 @@ export function EstimatePage() {
           </section>
         )}
 
-        <section className="est-how">
+        <section className="est-codes">
           <div className="container">
-            <span className="eyebrow">How it works</span>
-            <ol className="est-how__grid">
-              {STEPS.map((s) => (
-                <li key={s.n}>
-                  <span className="est-how__n">{s.n}</span>
-                  <h3>{s.title}</h3>
-                  <p>{s.body}</p>
-                </li>
+            <div className="est-codes__head">
+              <span className="eyebrow">What APCM pays for</span>
+              <h2 className="display-3">Three codes, one monthly fee per patient.</h2>
+            </div>
+            <div className="est-codes__grid">
+              {ESTIMATE.tiers.map((t) => (
+                <div key={t.code} className="est-code">
+                  <p className="est-code__code">{t.code}</p>
+                  <p className="est-code__rate">
+                    {usdRate(t.rate)} <span>per patient, per month</span>
+                  </p>
+                  <h3>{t.label}</h3>
+                  <p>{t.detail}</p>
+                </div>
               ))}
-            </ol>
+            </div>
           </div>
         </section>
       </main>
@@ -176,13 +176,7 @@ function NpiCard({ onFound }: { onFound: (p: Practice) => void }) {
           Continue without the lookup
         </button>
       )}
-      <ul className="est-ticks">
-        {['Free, no credit card', ESTIMATE.rateLabel, 'Results in under a minute'].map((t) => (
-          <li key={t}>
-            <Check size={14} /> {t}
-          </li>
-        ))}
-      </ul>
+      <p className="est-card__note">Free. No account. Nothing is saved unless you ask for the report.</p>
     </form>
   );
 }
@@ -210,83 +204,114 @@ function PracticeCard({ practice, onChange }: { practice: Practice; onChange: ()
 
 function Results({ practice, panel, setPanel }: { practice: Practice; panel: number; setPanel: (n: number) => void }) {
   const scenarios = useMemo(() => estimate(panel), [panel]);
+  const [key, setKey] = useState('expected');
+  const current = scenarios.find((s) => s.key === key) ?? scenarios[0];
   const expected = scenarios.find((s) => s.key === 'expected') ?? scenarios[0];
+  const name = practice.name.replace(/\.$/, '');
 
   return (
     <div className="est-results">
-      <div className="est-results__head">
-        <span className="eyebrow">Your estimate</span>
-        <h2 className="display-3">
-          About <em>{usd(expected.annual)}</em> a year in APCM revenue for {practice.name.replace(/\.$/, '')}.
-        </h2>
-        <p className="est-results__note">
-          Expected scenario: {Math.round(expected.enrolment * 100)}% of eligible patients enrolled, about{' '}
-          {expected.patients.toLocaleString()} patients a month.
-        </p>
-      </div>
+      <span className="eyebrow">Estimate for {name}</span>
 
-      <div className="est-panel">
-        <label className="est-label" htmlFor="panel">
-          Medicare patients on your panel
-        </label>
-        <div className="est-panel__row">
-          <input
-            id="panel"
-            type="range"
-            min={100}
-            max={10000}
-            step={50}
-            value={Math.min(panel, 10000)}
-            onChange={(e) => setPanel(Number(e.target.value))}
-            style={{ '--fill': `${((Math.min(panel, 10000) - 100) / 9900) * 100}%` } as CSSProperties}
-          />
-          <input
-            className="est-input est-input--num"
-            type="number"
-            min={0}
-            max={100000}
-            value={panel}
-            aria-label="Medicare patients on your panel"
-            onChange={(e) => setPanel(Math.max(0, Math.min(100000, Number(e.target.value) || 0)))}
-          />
+      <div className="est-results__grid">
+        <div className="est-figure">
+          <div className="est-seg" role="radiogroup" aria-label="Enrolment scenario">
+            {scenarios.map((s) => (
+              <button
+                key={s.key}
+                type="button"
+                role="radio"
+                aria-checked={s.key === current.key}
+                className={s.key === current.key ? 'is-active' : undefined}
+                onClick={() => setKey(s.key)}
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
+          <p className="est-figure__annual">{usd(current.annual)}</p>
+          <p className="est-figure__label">a year in APCM revenue</p>
+          <dl className="est-figure__stats">
+            <div>
+              <dt>Each month</dt>
+              <dd>{usd(current.monthly)}</dd>
+            </div>
+            <div>
+              <dt>Patients enrolled</dt>
+              <dd>{current.patients.toLocaleString()}</dd>
+            </div>
+            <div>
+              <dt>Of eligible patients</dt>
+              <dd>{Math.round(current.enrolment * 100)}%</dd>
+            </div>
+          </dl>
         </div>
-        <p className="est-hint">
-          We assume {Math.round(eligibleShare * 100)}% of a Medicare panel is APCM-eligible. Set the panel to match yours.
-        </p>
-      </div>
 
-      <div className="est-scenarios">
-        {scenarios.map((s) => (
-          <article key={s.key} className={`est-scenario${s.key === 'expected' ? ' est-scenario--featured' : ''}`}>
-            <header>
-              <h3>{s.label}</h3>
-              <span>{Math.round(s.enrolment * 100)}% enrolled</span>
-            </header>
-            <p className="est-scenario__annual">{usd(s.annual)}</p>
-            <p className="est-scenario__sub">a year · {usd(s.monthly)} a month</p>
-            <table>
-              <tbody>
-                {s.tiers.map((t) => (
-                  <tr key={t.code}>
-                    <th scope="row">
-                      {t.code}
-                      <small>{t.label}</small>
-                    </th>
-                    <td>
-                      {t.patients.toLocaleString()} × {usd(t.rate)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </article>
-        ))}
+        <div className="est-breakdown">
+          <label className="est-label" htmlFor="panel">
+            Medicare patients on your panel
+          </label>
+          <div className="est-panel__row">
+            <input
+              id="panel"
+              type="range"
+              min={100}
+              max={10000}
+              step={50}
+              value={Math.min(panel, 10000)}
+              onChange={(e) => setPanel(Number(e.target.value))}
+              style={{ '--fill': `${((Math.min(panel, 10000) - 100) / 9900) * 100}%` } as CSSProperties}
+            />
+            <input
+              className="est-input est-input--num"
+              type="number"
+              min={0}
+              max={100000}
+              value={panel}
+              aria-label="Medicare patients on your panel"
+              onChange={(e) => setPanel(Math.max(0, Math.min(100000, Number(e.target.value) || 0)))}
+            />
+          </div>
+          <p className="est-hint">
+            We assume {Math.round(eligibleShare * 100)}% of a Medicare panel is APCM-eligible.
+          </p>
+
+          <table className="est-table">
+            <thead>
+              <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Patients</th>
+                <th scope="col">Monthly</th>
+              </tr>
+            </thead>
+            <tbody>
+              {current.tiers.map((t) => (
+                <tr key={t.code}>
+                  <th scope="row">
+                    {t.code}
+                    <small>{t.label}</small>
+                  </th>
+                  <td>
+                    {t.patients.toLocaleString()} × {usdRate(t.rate)}
+                  </td>
+                  <td>{usd(t.monthly)}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr>
+                <th scope="row">Total</th>
+                <td>{current.patients.toLocaleString()}</td>
+                <td>{usd(current.monthly)}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
 
       <p className="est-fineprint">
-        {ESTIMATE.rateLabel}, per patient per month: {ESTIMATE.tiers.map((t) => `${t.code} ${usd(t.rate)}`).join(', ')}.
-        Actual payment varies by locality, coinsurance and documentation. This is an illustration, not a guarantee of
-        reimbursement.
+        {ESTIMATE.rateLabel}. Actual payment varies by locality, coinsurance and documentation. This is an
+        illustration, not a guarantee of reimbursement.
       </p>
 
       <LeadForm practice={practice} panel={panel} annual={expected.annual} />

@@ -176,8 +176,8 @@ export const CTA = {
 
 /**
  * The APCM revenue estimator at /estimate.html, a lead-capture page.
- * Rates are approximate national non-facility Medicare amounts. Check them against the current
- * Physician Fee Schedule before publishing, and update the label if you switch to locality rates.
+ * Rates are the CMS 2026 Physician Fee Schedule national non-facility amounts, before locality adjustment.
+ * Update them (and rateLabel) each January when the new fee schedule takes effect.
  */
 export const ESTIMATE = {
   /** NLM Clinical Tables, a CORS-enabled mirror of the CMS NPPES registry, so no proxy is needed. */
@@ -187,12 +187,30 @@ export const ESTIMATE = {
    * Empty means the form opens a prefilled email instead.
    */
   leadEndpoint: 'https://formspree.io/f/xgaakgdn',
-  rateLabel: 'Approximate CMS national Medicare rates',
+  rateLabel: 'CMS 2026 national Medicare rates',
   /** Share of a practice's Medicare panel in each APCM tier, and the monthly rate for that tier. */
   tiers: [
-    { code: 'G0556', label: 'One chronic condition', share: 0.2, rate: 15 },
-    { code: 'G0557', label: 'Two or more chronic conditions', share: 0.55, rate: 50 },
-    { code: 'G0558', label: 'Two or more conditions, QMB', share: 0.1, rate: 110 },
+    {
+      code: 'G0556',
+      label: 'One or no chronic conditions',
+      detail: 'Patients with one chronic condition, such as hypertension or diabetes, or none.',
+      share: 0.2,
+      rate: 16.37,
+    },
+    {
+      code: 'G0557',
+      label: 'Two or more chronic conditions',
+      detail: 'The core APCM group. Most of a typical Medicare panel lands here.',
+      share: 0.55,
+      rate: 53.78,
+    },
+    {
+      code: 'G0558',
+      label: 'Two or more conditions, QMB',
+      detail: 'Qualified Medicare Beneficiaries with two or more conditions. The highest rate.',
+      share: 0.1,
+      rate: 117.24,
+    },
   ],
   /** Share of eligible patients who enrol, per scenario. */
   scenarios: [
