@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { EstimatePage } from './EstimatePage';
 import '../styles/global.css';
 import '../styles/estimate.css';
+import '../styles/estimate-theme.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

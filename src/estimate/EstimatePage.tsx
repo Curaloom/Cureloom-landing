@@ -1,10 +1,22 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from 'react';
 import AnimatedContent from '../components/reactbits/Animations/AnimatedContent/AnimatedContent';
-import { Wordmark } from '../components/Logo';
 import { ArrowRight, Check } from '../components/icons';
 import { ESTIMATE, SITE } from '../site';
 import { estimate, eligibleShare, usd, usdRate } from './calc';
 import { isValidNpi, logNpiLookup, lookupNpi, type Practice } from './npi';
+
+// Same mark as the homepage logo.
+function Logo() {
+  return (
+    <span className="est-logo">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="#BF4B2A" strokeWidth="1.6" strokeDasharray="3 2.2" />
+        <circle cx="12" cy="12" r="4" fill="currentColor" />
+      </svg>
+      curalooms
+    </span>
+  );
+}
 
 const bookingHref = SITE.bookingHref.startsWith('#') ? `/${SITE.bookingHref}` : SITE.bookingHref;
 
@@ -24,16 +36,16 @@ export function EstimatePage() {
       <header className="nav nav--scrolled">
         <div className="container nav__inner">
           <a href="/" aria-label={`${SITE.name} home`} className="est-brand">
-            <Wordmark size={22} />
-            <span className="est-brand__tag">APCM estimator</span>
+            <Logo />
+            <span className="est-brand__tag">APCM Estimator</span>
           </a>
           <div className="nav__right">
             <a className="est-navlink" href="/#how">
               How Curalooms works
             </a>
-            <a className="btn btn--primary btn--sm nav__cta" href={bookingHref} aria-label="Request a walkthrough">
-              <span className="nav__cta-long">Request a walkthrough</span>
-              <span className="nav__cta-short">Walkthrough</span>
+            <a className="btn btn--primary btn--sm nav__cta" href={bookingHref} aria-label="Start a conversation">
+              <span className="nav__cta-long">Start a conversation</span>
+              <span className="nav__cta-short">Talk to us</span>
             </a>
           </div>
         </div>
@@ -42,8 +54,8 @@ export function EstimatePage() {
       <main className="est">
         <section className="est-hero">
           <div className="container est-hero__grid">
-            <AnimatedContent className="est-hero__text" distance={16} duration={0.7} ease="power2.out" trigger="mount">
-              <span className="eyebrow">APCM revenue estimate</span>
+            <AnimatedContent className="est-hero__text" reverse distance={16} duration={0.7} ease="power2.out" trigger="mount">
+              <span className="eyebrow">APCM Estimator</span>
               <h1 className="display-2 est-hero__title">
                 Your Medicare panel, <em>priced out</em> under APCM.
               </h1>
@@ -53,7 +65,7 @@ export function EstimatePage() {
               </p>
             </AnimatedContent>
 
-            <AnimatedContent className="est-hero__form" distance={24} duration={0.9} ease="power2.out" delay={0.2} trigger="mount">
+            <AnimatedContent className="est-hero__form" reverse distance={24} duration={0.9} ease="power2.out" delay={0.2} trigger="mount">
               {practice ? (
                 <PracticeCard practice={practice} onChange={() => setPractice(null)} />
               ) : (
@@ -95,7 +107,7 @@ export function EstimatePage() {
 
       <footer className="est-footer">
         <div className="container est-footer__inner">
-          <Wordmark size={20} />
+          <Logo />
           <span>
             © {SITE.year} {SITE.name}. Estimates are illustrative, not a guarantee of reimbursement.
           </span>
