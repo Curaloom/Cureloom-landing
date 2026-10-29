@@ -198,31 +198,31 @@ export const ESTIMATE = {
       code: 'G0556',
       label: 'One or no chronic conditions',
       detail: 'Patients with one chronic condition, such as hypertension or diabetes, or none.',
-      share: 0.2,
+      share: 0.25,
       rate: 16.37,
     },
     {
       code: 'G0557',
       label: 'Two or more chronic conditions',
       detail: 'The core APCM group. Most of a typical Medicare panel lands here.',
-      share: 0.55,
+      share: 0.4,
       rate: 53.78,
     },
     {
       code: 'G0558',
       label: 'Two or more conditions, QMB',
       detail: 'Qualified Medicare Beneficiaries with two or more conditions. The highest rate.',
-      share: 0.1,
+      share: 0.05,
       rate: 117.24,
     },
   ],
   /** Share of eligible patients who enrol, per scenario. */
   scenarios: [
-    { key: 'conservative', label: 'Conservative', enrolment: 0.2 },
-    { key: 'expected', label: 'Expected', enrolment: 0.4 },
-    { key: 'strong', label: 'Strong', enrolment: 0.6 },
+    { key: 'conservative', label: 'Conservative', enrolment: 0.1 },
+    { key: 'expected', label: 'Expected', enrolment: 0.2 },
+    { key: 'strong', label: 'Strong', enrolment: 0.35 },
   ],
   /** Starting panel size before the visitor adjusts it. */
-  defaultPanel: { individual: 800, organization: 2500 },
+  defaultPanel: { individual: 400, organization: 1000 },
   roles: ['Physician', 'Practice manager', 'Nurse or care manager', 'Billing or revenue cycle', 'Other'],
 } as const;

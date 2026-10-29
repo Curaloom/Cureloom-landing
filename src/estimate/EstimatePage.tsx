@@ -22,7 +22,7 @@ const bookingHref = SITE.bookingHref.startsWith('#') ? `/${SITE.bookingHref}` : 
 
 export function EstimatePage() {
   const [practice, setPractice] = useState<Practice | null>(null);
-  const [panel, setPanel] = useState(800);
+  const [panel, setPanel] = useState<number>(ESTIMATE.defaultPanel.individual);
   const resultRef = useRef<HTMLElement>(null);
 
   const start = (p: Practice) => {
