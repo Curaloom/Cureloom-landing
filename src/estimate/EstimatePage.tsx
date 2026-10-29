@@ -5,15 +5,10 @@ import { ESTIMATE, SITE } from '../site';
 import { estimate, eligibleShare, usd, usdRate } from './calc';
 import { isValidNpi, logNpiLookup, lookupNpi, type Practice } from './npi';
 
-// Same mark as the homepage logo.
 function Logo() {
   return (
     <span className="est-logo">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="12" cy="12" r="10" fill="none" stroke="#BF4B2A" strokeWidth="1.6" strokeDasharray="3 2.2" />
-        <circle cx="12" cy="12" r="4" fill="currentColor" />
-      </svg>
-      curalooms
+      <img src="/curalooms-logo.svg" alt="Curalooms" height={26} style={{ height: 26, width: 'auto', display: 'block' }} />
     </span>
   );
 }
