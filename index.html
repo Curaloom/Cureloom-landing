@@ -674,10 +674,13 @@ footer .logo{color:var(--band-ink)}
 
   // Section reveal: stagger blocks within each section, then slide each in once it is on screen
   document.querySelectorAll('section').forEach(sec => sec.querySelectorAll('.rv').forEach((el, i) => el.style.setProperty('--d', Math.min(i, 6) * 90 + 'ms')));
-  const io = new IntersectionObserver(entries => entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-  }), {threshold: .12, rootMargin: '0px 0px -40px 0px'});
-  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  // A plain position check rather than IntersectionObserver, so content still shows if the observer never fires
+  const reveal = () => document.querySelectorAll('.rv:not(.in)').forEach(el => {
+    if (el.getBoundingClientRect().top < innerHeight - 40) el.classList.add('in');
+  });
+  addEventListener('scroll', reveal, {passive: true});
+  addEventListener('resize', reveal);
+  reveal();
 
   // Hero ledger: light the seven gates, then reveal results and sign-off. Loops.
   const gates = [...document.querySelectorAll('.gate')], rows = [...document.querySelectorAll('.row')];
