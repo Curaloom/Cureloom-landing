@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, type CSSProperties, type FormEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from 'react';
 import AnimatedContent from '../components/reactbits/Animations/AnimatedContent/AnimatedContent';
 import { Wordmark } from '../components/Logo';
 import { ArrowRight, Check } from '../components/icons';
@@ -106,13 +106,16 @@ export function EstimatePage() {
 }
 
 function NpiCard({ onFound }: { onFound: (p: Practice) => void }) {
-  const [npi, setNpi] = useState('');
+  // The homepage NPI check links here as /estimate.html?npi=<10 digits>.
+  const [npi, setNpi] = useState(() =>
+    (new URLSearchParams(window.location.search).get('npi') ?? '').replace(/\D/g, '').slice(0, 10),
+  );
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
   const [error, setError] = useState('');
   const [canSkip, setCanSkip] = useState(false);
 
-  const submit = async (e: FormEvent) => {
-    e.preventDefault();
+  const submit = async (e?: FormEvent) => {
+    e?.preventDefault();
     setCanSkip(false);
     if (!isValidNpi(npi)) {
       setStatus('error');
@@ -138,6 +141,11 @@ function NpiCard({ onFound }: { onFound: (p: Practice) => void }) {
       setCanSkip(true);
     }
   };
+
+  // Run the lookup straight away when the NPI arrived from the homepage.
+  useEffect(() => {
+    if (isValidNpi(npi)) void submit();
+  }, []);
 
   return (
     <form className="est-card" onSubmit={submit} noValidate>
