@@ -57,12 +57,9 @@ export function EstimatePage() {
             <AnimatedContent className="est-hero__text" reverse distance={16} duration={0.7} ease="power2.out" trigger="mount">
               <span className="eyebrow">APCM Estimator</span>
               <h1 className="display-2 est-hero__title">
-                Your Medicare panel, <em>priced out</em> under APCM.
+                Your panel, <em>priced out</em> under APCM.
               </h1>
-              <p className="lede est-hero__sub">
-                Advanced Primary Care Management pays a monthly fee for every enrolled patient. Start from your NPI, set
-                your panel size, and see what that adds up to across a year.
-              </p>
+              <p className="lede est-hero__sub">Enter your NPI to see what APCM adds up to in a year.</p>
             </AnimatedContent>
 
             <AnimatedContent className="est-hero__form" reverse distance={24} duration={0.9} ease="power2.out" delay={0.2} trigger="mount">
